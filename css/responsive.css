@@ -72,4 +72,11 @@
         font-size: 11px;
         font-weight: normal;
     }
+    .personalize {
+        display: flex;
+        gap: 20px;
+    }
+    figure {
+        width: 50%;
+    }
 }
