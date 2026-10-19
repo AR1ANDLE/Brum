@@ -47,8 +47,50 @@ main {
     color: var(--coffe-accent);
 }
 
-.personalize {
-    height: 100vh;
+figure {
+    width: 100%;
+    min-height: 70vh;
     margin-top: 10px;
-    background: green;
+    border-radius: 20px;
+    background-color: var(--coffe-stage);
+}
+.figheading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+figure .badge {
+    font-size: 11px;
+    padding: 5px;
+    margin: 10px 0 0 30px;
+    background-color: #fff;
+    border-radius: 20px;
+    color: var(--coffe-accent);
+}
+figure .date {
+    font-size: 11px;
+    margin: 10px 30px 0 0;
+}
+figcaption {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: -25px;
+}
+
+figcaption > h2 {
+    font-family: "Playfair Display";
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 24px;
+    letter-spacing: 0%;
+    text-align: center;
+}
+
+figcaption > h3 {
+    font-family: "DM Sans";
+    font-weight: 400;
+    font-size: 10px;
 }
