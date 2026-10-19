@@ -4,6 +4,9 @@
     --coffe-text : #30291F;
     --coffe-accent : #394B32;
     --coffe-muted : #796A59;
+    --coffe-stage: #E8DBC7;
+    --coffe-border : #dfd5c8;
+    --coffe-background : #FAF7F0;
 }
 
 * {
@@ -14,4 +17,8 @@
 }
 a {
     color: #fff;
+}
+
+body {
+    background-color: var(--coffe-background);
 }
