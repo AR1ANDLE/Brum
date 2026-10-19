@@ -7,6 +7,7 @@
     --coffe-stage: #E8DBC7;
     --coffe-border : #dfd5c8;
     --coffe-background : #FAF7F0;
+    --coffe-selected : #E9EEDC;
 }
 
 * {
@@ -17,6 +18,18 @@
 }
 a {
     color: #fff;
+}
+
+.optionbtn {
+    height: 70px;
+    border-radius: 12px;
+    border: 1px solid var(--coffe-border);
+    background-color: #fff;
+}
+
+.optionbtn--selected {
+    background-color: var(--coffe-selected);
+    border: 2px solid var(--coffe-accent);
 }
 
 body {
@@ -50,7 +63,8 @@ main {
 
 figure {
     width: 100%;
-    min-height: 70vh;
+    max-width: 900px;
+    max-height: max-content;
     margin-top: 10px;
     border-radius: 20px;
     background-color: var(--coffe-stage);
@@ -99,9 +113,10 @@ figcaption > h3 {
 }
 form {
     margin-top : 20px;
+    width: 100%;
 }
 
-form > h2 {
+form h2 {
     font-family: 'DM Sans';
     font-weight: 500;
     font-style: Medium;
@@ -111,7 +126,7 @@ form > h2 {
     color: var(--coffe-accent);
 }
 
-form > h1 {
+form h1 {
     font-family: 'Playfair Display';
     font-weight: 500;
     font-style: Medium;
@@ -126,4 +141,36 @@ form h3 {
     font-size: 14px;
     line-height: 145%;
     color: var(--coffe-muted);
+}
+
+label {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+label > h2 {
+    font-family: 'DM Sans';
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 14px;
+    line-height: 145%;
+    color: var(--coffe-text);
+}
+
+label > p {
+    font-family: 'DM Sans';
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 11px;
+    line-height: 145%;
+    color: var(--coffe-muted);
+}
+
+.selection-menu {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
 }
