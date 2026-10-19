@@ -1,0 +1,38 @@
+@media screen and (min-width: 300px) {
+    header {
+        min-height: 8vh;
+        height: 9vh;
+        max-height: 11vh;
+        width: 100%;
+        background-color: red;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 3%;
+    }
+    header > .logo {
+        width: 150px;
+        max-width: 260px;
+        height : 40px;
+        max-height: 90%;
+        background: black;
+    }
+    .shopicon {
+        width: 48px;
+        height: 48px;
+        background-color: green;
+    }
+    header > nav {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    header {
+        justify-content: space-between;
+    }
+    header > nav {
+        display: flex;
+        gap: 15px;
+    }
+}

@@ -5,3 +5,13 @@
     --coffe-accent : #394B32;
     --coffe-muted : #796A59;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+a {
+    color: #fff;
+}
