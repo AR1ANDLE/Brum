@@ -8,10 +8,11 @@
     <!-- Links -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
     <div class="heading">
-        <h2>Du grain à votre tasse. Un café qui vous ressemble.</h2>
+        <h2 class="txt-sm">Du grain à votre tasse. Un café qui vous ressemble.</h2>
     </div>
     <header>
         <div class="logo">
@@ -28,5 +29,174 @@
             <h2 class="shop-count">1</h2>
         </div>
     </header>
+    <main>
+        <section class="breadcrumb">
+            <h2 class="active">01  Personnaliser </h2> — <h2> 02  Récapitulatif</h2>
+        </section>
+        <section class="personalize" id="personalize">
+            <figure>
+                <div class="figheading">
+                    <span class="badge">LE CAFÉ, À VOTRE FAÇON</span><span class="date">01 / 04</span>
+                </div>
+                <img src="assets/images/coffe.png" alt="" srcset="">
+                <figcaption>
+                    <h2>Un petit rituel. Beaucoup de vous.</h2>
+                    <h3>ESPRESSO · M · AVOINE · CARAMEL</h3>
+                </figcaption>
+            </figure>
+            <form class="selection-form">
+                <div class="form-heading">
+                    <h2>VOTRE COFFEE SHOP, AUTREMENT.</h2>
+                    <h1>Votre pause, votre signature.</h1>
+                    <h3>Quelques envies, un café unique.<br>À vous de composer la suite.</h3>
+                </div>
+                <label class="option-title">
+                    <h2>01  La base</h2>
+                    <p>Choix unique</p>
+                </label>
+                <div class="selection-menu">
+                    <button class="optionbtn optionbtn--selected">
+                        <h2>Espresso</h2>
+                        <h3>18,00 DH</h3>
+                    </button>
+                    <button class="optionbtn">
+                        <h2>Filtre</h2>
+                        <h3>16,00 DH</h3>
+                    </button>
+                </div>
+                <label class="option-title">
+                    <h2>02  La taille</h2>
+                    <p>Choix unique</p>
+                </label>
+                <div class="selection-menu">
+                    <button class="optionbtn">
+                        <h2>S · 150 ml</h2>
+                        <h3>Inclus</h3>
+                    </button>
+                    <button class="optionbtn optionbtn--selected">
+                        <h2>M · 250 ml</h2>
+                        <h3>+ 4,00 DH</h3>
+                    </button>
+                    <button class="optionbtn">
+                        <h2>L · 350 ml</h2>
+                        <h3>+ 8,00 DH</h3>
+                    </button>
+                </div>
+                <label class="option-title">
+                    <h2>03  Le lait</h2>
+                    <p>Choix unique</p>
+                </label>
+                <div class="selection-menu">
+                    <button class="optionbtn">
+                        <h2>Vache</h2>
+                        <h3>Inclus</h3>
+                    </button>
+                    <button class="optionbtn optionbtn--selected">
+                        <h2>Avoine</h2>
+                        <h3>+ 4,00 DH</h3>
+                    </button>
+                    <button class="optionbtn">
+                        <h2>Amande</h2>
+                        <h3>+ 5,00 DH</h3>
+                    </button>
+                </div>
+                <label class="option-title">
+                    <h2>04  La touche en plus</h2>
+                    <p>Plusieurs choix</p>
+                </label>
+                <div class="selection-menu">
+                    <button class="optionbtn optionbtn--selected">
+                        <h2>Caramel</h2>
+                        <h3>+ 3,00 DH</h3>
+                    </button>
+                    <button class="optionbtn">
+                        <h2>Vanille</h2>
+                        <h3>+ 3,00 DH</h3>
+                    </button>
+                </div>
+                <label><p>Le prix évolue selon vos choix. Vous pourrez les modifier au récapitulatif.</p></label>
+            </form>
+        </section>
+        <section class="total" id="personalize">
+            <div class="price-container">
+                <h2>Total</h2>
+                <div class="price" id="price">
+                    <span>29,00</span> DH
+                </div>
+            </div>
+            <input type="button" value="Ajouter au panier   →">
+        </section>
+        <section id="checkout" class="hidden">
+            <div class="form-heading" style="margin-top: 20px;">
+                <h2>VOTRE CRÉATION EST PRÊTE</h2>
+                <h1>Votre moment café,<br> exactement comme vous l’aimez.</h1>
+            </div> 
+            <div class="checkout">
+                <div class="figure">
+                    <figure>
+                        <div class="figheading">
+                            <span class="badge">LE CAFÉ, À VOTRE FAÇON</span><span class="date">01 / 04</span>
+                        </div>
+                        <img src="assets/images/coffe.png" alt="" srcset="">
+                        <figcaption>
+                            <h2>Un petit rituel. Beaucoup de vous.</h2>
+                            <h3>ESPRESSO · M · AVOINE · CARAMEL</h3>
+                        </figcaption>
+                    </figure>
+                    <div class="modify-selection">
+                        <div class="title">
+                            <h2>Votre café signature</h2>
+                            <h3>Espresso · M · Avoine · Caramel</h3>
+                        </div>
+                        <a id="modifyButton">Modifier</a>
+                    </div>
+                </div>
+                <article class="billet">
+                    <div class="badge">✓  Sélection ajoutée</div>
+                    <h2>Votre récapitulatif</h2>
+                    <h3>Une création personnalisée · Quantité : 1</h3>
+                    <div class="seperator"></div>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Base · Espresso</td>
+                                <td><span>18,00 DH</span></td>
+                            </tr>
+                            <tr>
+                                <td>Taille · M / 250 ml</td>
+                                <td><span>4,00 DH</span></td>
+                            </tr>
+                            <tr>
+                                <td>Lait · Avoine</td>
+                                <td><span>4,00 DH</span></td>
+                            </tr>
+                            <tr>
+                                <td>Supplément · Caramel</td>
+                                <td><span>3,00 DH</span></td>
+                            </tr>
+                            <tfoot>
+                                <tr>
+                                    <td>Total</td>
+                                    <td><span>29,00 DH</span></td>
+                                </tr>
+                            </tfoot>
+                        </tbody>
+                    </table>
+                    <h3>Prix de cette sélection · aucun paiement effectué.</h3>
+                    <button class="checkout-btn">Créer un autre café   →</button>
+                    <div class="notice">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check preview-icon"><path d="M20 6 9 17l-5-5"/></svg>
+                        <h3>Votre sélection reste modifiable à tout moment.</h3>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>BRUME — Le goût de votre rythme.</p>
+        <p class="p-hidden">Une création unique, la vôtre.</p>
+    </footer>
+
+    <script src="script/main.js"></script>
 </body>
 </html>

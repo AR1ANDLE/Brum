@@ -43,6 +43,14 @@
     .heading {
         display: none;
     }
+    .checkout {
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+    }
+    .p-hidden {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -71,5 +79,22 @@
         font-weight: 400;
         font-size: 11px;
         font-weight: normal;
+    }
+    .personalize {
+        display: flex;
+        gap: 20px;
+    }
+    figure {
+        width: 50%;
+    }
+    footer {
+        justify-content: space-between;
+        /* padding: 0 3%; */
+    }
+    .p-hidden {
+        display: block;
+    }
+    .checkout {
+        flex-direction: row;
     }
 }
