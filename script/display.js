@@ -12,6 +12,8 @@
     const sizeButton = document.querySelectorAll('.taille-menu button')
     const milkButton = document.querySelectorAll('.milk-menu button')
     const toppingButton = document.querySelectorAll('.topping-menu button')
+    // Selection Menu Import
+    const selectionButton = document.querySelectorAll('.optionbtn')
 
 // Navigation
 
@@ -54,3 +56,15 @@ injectItems(baseButton, base)
 injectItems(sizeButton, taille)
 injectItems(milkButton, milk)
 injectItems(toppingButton, topping)
+
+// Selected buttons display
+
+function selectButton(){
+    for(let i = 0; i < selectionButton.length; i++) {
+        selectionButton[i].addEventListener('click', () => {
+            selectionButton[i].classList.toggle('optionbtn--selected')
+        })
+    }
+}
+
+selectButton()
