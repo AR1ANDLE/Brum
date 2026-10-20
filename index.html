@@ -24,16 +24,16 @@
             <a href="#">Notre savoir-faire</a>
             <a href="#">Besoin d’aide ?</a>
         </nav>
-        <div class="shopicon">
+        <div class="shopicon" id="shoppingCart">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-handbag preview-icon"><path d="M2.048 18.566A2 2 0 0 0 4 21h16a2 2 0 0 0 1.952-2.434l-2-9A2 2 0 0 0 18 8H6a2 2 0 0 0-1.952 1.566z"/><path d="M8 11V6a4 4 0 0 1 8 0v5"/></svg>
             <h2 class="shop-count">1</h2>
         </div>
     </header>
     <main>
         <section class="breadcrumb">
-            <h2 class="active">01  Personnaliser </h2> — <h2> 02  Récapitulatif</h2>
+            <h2 class="active" id="pCrumb">01  Personnaliser </h2> — <h2 id="cCrumb"> 02  Récapitulatif</h2>
         </section>
-        <section class="personalize" id="personalize">
+        <section class="personalize personalize-section" id="personalize">
             <figure>
                 <div class="figheading">
                     <span class="badge">LE CAFÉ, À VOTRE FAÇON</span><span class="date">01 / 04</span>
@@ -117,7 +117,7 @@
                 <label><p>Le prix évolue selon vos choix. Vous pourrez les modifier au récapitulatif.</p></label>
             </form>
         </section>
-        <section class="total" id="personalize">
+        <section class="total personalize-section">
             <div class="price-container">
                 <h2>Total</h2>
                 <div class="price" id="price">
@@ -197,6 +197,6 @@
         <p class="p-hidden">Une création unique, la vôtre.</p>
     </footer>
 
-    <script src="script/main.js"></script>
+    <script src="script/display.js"></script>
 </body>
 </html>

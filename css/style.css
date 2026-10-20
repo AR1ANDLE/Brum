@@ -55,6 +55,7 @@ main {
     font-family: "DM Sans", sans-serif;
     font-weight: 400;
     color: var(--coffe-muted);
+    cursor: pointer;
 }
 
 .breadcrumb > .active {
@@ -375,6 +376,7 @@ tfoot > tr > td > span {
     text-decoration: underline;
     text-decoration-style: solid;
     color: var(--coffe-accent);
+    cursor: pointer;
 }
 
 .hidden {
