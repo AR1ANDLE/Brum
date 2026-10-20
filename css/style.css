@@ -29,7 +29,7 @@ a {
 
 .optionbtn--selected {
     background-color: var(--coffe-selected);
-    border: 2px solid var(--coffe-accent);
+    outline: 2px solid var(--coffe-accent);
 }
 
 body {
