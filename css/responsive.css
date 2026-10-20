@@ -43,6 +43,14 @@
     .heading {
         display: none;
     }
+    .checkout {
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+    }
+    .p-hidden {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -78,5 +86,15 @@
     }
     figure {
         width: 50%;
+    }
+    footer {
+        justify-content: space-between;
+        /* padding: 0 3%; */
+    }
+    .p-hidden {
+        display: block;
+    }
+    .checkout {
+        flex-direction: row;
     }
 }
