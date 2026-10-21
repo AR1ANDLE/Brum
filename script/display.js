@@ -60,10 +60,16 @@ injectItems(toppingButton, topping)
 // Selected buttons display
 
 function selectButton(){
+
     for(let i = 0; i < selectionButton.length; i++) {
-        selectionButton[i].addEventListener('click', () => {
-            selectionButton[i].classList.toggle('optionbtn--selected')
-        })
+        for(let j = 0; j < selectionButton.length; j++) {
+            selectionButton[i].addEventListener('click', () => {
+                if (selectionButton[i].parentElement.classList === selectionButton[j].parentElement.classList && selectionButton[i].parentElement.id === 'unique') {
+                    selectionButton[j].classList.remove('optionbtn--selected')
+                }
+                selectionButton[i].classList.add('optionbtn--selected')
+            })
+        }
     }
 }
 
