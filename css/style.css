@@ -38,7 +38,21 @@ a{
 .optionbtn--selected {
     background-color: var(--coffe-selected);
     outline: 2px solid var(--coffe-accent);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
+.optionbtn--selected > h3{
+    width: 100%;
+}
+
+.optionbtn--selected::before {
+    content: "✓";
+    padding: 0 5px;
+}
+
 .optionbtn > h2 {
     font-family: DM Sans;
     font-weight: 500;
@@ -243,7 +257,7 @@ label > p {
     color: var(--coffe-text);
 }
 
-.total > input {
+.total > button {
     width: 65%;
     max-width: 300px;
     height: 80%;

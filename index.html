@@ -55,13 +55,13 @@
                     <p>Choix unique</p>
                 </label>
                 <div class="base-menu selection-menu" id="unique">
-                    <button type="button" class="optionbtn">
+                    <button type="button" class="optionbtn optionbtn--selected">
                         <h2></h2>
-                        <h3></h3>
+                        <h3 class="price"></h3>
                     </button>
                     <button type="button" class="optionbtn">
                         <h2></h2>
-                        <h3></h3>
+                        <h3 class="price"></h3>
                     </button>
                 </div>
                 <label class="option-title">
@@ -71,15 +71,15 @@
                 <div class="selection-menu taille-menu" id="unique">
                     <button type="button" class="optionbtn">
                         <h2></h2>
-                        <h3></h3>
+                        <h3 class="price"></h3>
                     </button>
                     <button type="button" class="optionbtn">
                         <h2></h2>
-                        <h3></h3>
+                        <h3 class="price"></h3>
                     </button>
                     <button type="button" class="optionbtn">
                         <h2></h2>
-                        <h3></h3>
+                        <h3 class="price"></h3>
                     </button>
                 </div>
                 <label class="option-title">
@@ -89,15 +89,15 @@
                 <div class="selection-menu milk-menu" id="unique">
                     <button type="button" class="optionbtn">
                         <h2></h2>
-                        <h3></h3>
+                        <h3 class="price"></h3>
                     </button>
                     <button type="button" class="optionbtn">
                         <h2></h2>
-                        <h3></h3>
+                        <h3 class="price"></h3>
                     </button>
                     <button type="button" class="optionbtn">
                         <h2></h2>
-                        <h3></h3>
+                        <h3 class="price"></h3>
                     </button>
                 </div>
                 <label class="option-title">
@@ -107,11 +107,11 @@
                 <div class="selection-menu topping-menu" id="multiple">
                     <button type="button" class="optionbtn">
                         <h2></h2>
-                        <h3></h3>
+                        <h3 class="price"></h3>
                     </button>
                     <button type="button" class="optionbtn">
                         <h2></h2>
-                        <h3></h3>
+                        <h3 class="price"></h3>
                     </button>
                 </div>
                 <label><p>Le prix évolue selon vos choix. Vous pourrez les modifier au récapitulatif.</p></label>
@@ -120,11 +120,11 @@
         <section class="total personalize-section">
             <div class="price-container">
                 <h2>Total</h2>
-                <div class="price" id="price">
+                <div class="price" id="priceTotal">
                     <span>29,00</span> DH
                 </div>
             </div>
-            <input type="button" value="Ajouter au panier   →">
+            <button type="submit" id="addToCart">Ajouter au panier   →</button>
         </section>
         <section id="checkout" class="hidden">
             <div class="form-heading" style="margin-top: 20px;">
@@ -197,7 +197,7 @@
         <p class="p-hidden">Une création unique, la vôtre.</p>
     </footer>
     <script src="script/data.js"></script>
-    <script src="script/count.js"></script>
     <script src="script/display.js"></script>
+    <script src="script/count.js"></script>
 </body>
 </html>

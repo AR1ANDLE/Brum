@@ -14,6 +14,10 @@
     const toppingButton = document.querySelectorAll('.topping-menu button')
     // Selection Menu Import
     const selectionButton = document.querySelectorAll('.optionbtn')
+    // Count price
+    const confirmButton = document.getElementById('addToCart')
+    const priceTotal = document.getElementById('priceTotal')
+    let price = document.querySelectorAll('.price')
 
 // Navigation
 
@@ -60,7 +64,6 @@ injectItems(toppingButton, topping)
 // Selected buttons display
 
 function selectButton(){
-
     for(let i = 0; i < selectionButton.length; i++) {
         for(let j = 0; j < selectionButton.length; j++) {
             selectionButton[i].addEventListener('click', () => {
@@ -70,7 +73,25 @@ function selectButton(){
                 selectionButton[i].classList.add('optionbtn--selected')
             })
         }
+        selectionButton[i].addEventListener('click', () => {
+        let total = 0
+        for(let i = 0; i < price.length; i++) {
+        let val = price[i].innerHTML.replace(/,.*$/, "");
+        let pickedPrice = Number(val)
+
+        if (Number.isNaN(pickedPrice)) {
+            total += 0
+        } 
+        else if (pickedPrice !== 0 && price[i].parentElement.classList.contains('optionbtn--selected')) {
+            total += pickedPrice
+        }
+    }
+        priceTotal.innerHTML = `<span> ${total},00</span> DH`
+    })
     }
 }
 
 selectButton()
+
+// display total price 
+
