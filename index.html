@@ -10,174 +10,289 @@
     <link rel="stylesheet" href="css/responsive.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
+
 <body>
     <div class="heading">
-        <h2 class="txt-sm">Du grain à votre tasse. Un café qui vous ressemble.</h2>
+        <h2 class="txt-sm">
+            Du grain à votre tasse. Un café qui vous ressemble.
+        </h2>
     </div>
+
     <header>
         <div class="logo">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coffee preview-icon"><path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/></svg>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-coffee preview-icon"
+            >
+                <path d="M10 2v2"/>
+                <path d="M14 2v2"/>
+                <path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/>
+                <path d="M6 2v2"/>
+            </svg>
+
             <h2>BRUME</h2>
         </div>
+
         <nav>
             <a href="./index.html">L’atelier café</a>
             <a href="#">Notre savoir-faire</a>
             <a href="#">Besoin d’aide ?</a>
         </nav>
+
         <div class="shopicon" id="shoppingCart">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-handbag preview-icon"><path d="M2.048 18.566A2 2 0 0 0 4 21h16a2 2 0 0 0 1.952-2.434l-2-9A2 2 0 0 0 18 8H6a2 2 0 0 0-1.952 1.566z"/><path d="M8 11V6a4 4 0 0 1 8 0v5"/></svg>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-handbag preview-icon"
+            >
+                <path d="M2.048 18.566A2 2 0 0 0 4 21h16a2 2 0 0 0 1.952-2.434l-2-9A2 2 0 0 0 18 8H6a2 2 0 0 0-1.952 1.566z"/>
+                <path d="M8 11V6a4 4 0 0 1 8 0v5"/>
+            </svg>
+
             <h2 class="shop-count">1</h2>
         </div>
     </header>
+
     <main>
         <section class="breadcrumb">
-            <h2 class="active" id="pCrumb">01  Personnaliser </h2> — <h2 id="cCrumb"> 02  Récapitulatif</h2>
+            <h2 class="active" id="pCrumb">
+                01 Personnaliser
+            </h2>
+
+            —
+
+            <h2 id="cCrumb">
+                02 Récapitulatif
+            </h2>
         </section>
+
         <section class="personalize personalize-section" id="personalize">
             <figure>
                 <div class="figheading">
-                    <span class="badge">LE CAFÉ, À VOTRE FAÇON</span><span class="date">01 / 04</span>
+                    <span class="badge">LE CAFÉ, À VOTRE FAÇON</span>
+                    <span class="date">01 / 04</span>
                 </div>
+
                 <img src="assets/images/coffe.png" alt="" srcset="">
+
                 <figcaption>
                     <h2>Un petit rituel. Beaucoup de vous.</h2>
                     <h3>ESPRESSO · M · AVOINE · CARAMEL</h3>
                 </figcaption>
             </figure>
+
             <form class="selection-form">
                 <div class="form-heading">
                     <h2>VOTRE COFFEE SHOP, AUTREMENT.</h2>
                     <h1>Votre pause, votre signature.</h1>
-                    <h3>Quelques envies, un café unique.<br>À vous de composer la suite.</h3>
+                    <h3>
+                        Quelques envies, un café unique.<br>
+                        À vous de composer la suite.
+                    </h3>
                 </div>
-                <label class="option-title">
-                    <h2>01  La base</h2>
+
+                <label class="option-title" id="base">
+                    <h2>01 La base</h2>
                     <p>Choix unique</p>
                 </label>
+
                 <div class="base-menu selection-menu" id="unique">
                     <button type="button" class="optionbtn optionbtn--selected">
                         <h2></h2>
                         <h3 class="price"></h3>
                     </button>
+
                     <button type="button" class="optionbtn">
                         <h2></h2>
                         <h3 class="price"></h3>
                     </button>
                 </div>
-                <label class="option-title">
-                    <h2>02  La taille</h2>
+
+                <label class="option-title" id="taille">
+                    <h2>02 La taille</h2>
                     <p>Choix unique</p>
                 </label>
+
                 <div class="selection-menu taille-menu" id="unique">
                     <button type="button" class="optionbtn">
                         <h2></h2>
                         <h3 class="price"></h3>
                     </button>
+
                     <button type="button" class="optionbtn">
                         <h2></h2>
                         <h3 class="price"></h3>
                     </button>
+
                     <button type="button" class="optionbtn">
                         <h2></h2>
                         <h3 class="price"></h3>
                     </button>
                 </div>
-                <label class="option-title">
-                    <h2>03  Le lait</h2>
+
+                <label class="option-title" id="lait">
+                    <h2>03 Le lait</h2>
                     <p>Choix unique</p>
                 </label>
+
                 <div class="selection-menu milk-menu" id="unique">
                     <button type="button" class="optionbtn">
                         <h2></h2>
                         <h3 class="price"></h3>
                     </button>
+
                     <button type="button" class="optionbtn">
                         <h2></h2>
                         <h3 class="price"></h3>
                     </button>
+
                     <button type="button" class="optionbtn">
                         <h2></h2>
                         <h3 class="price"></h3>
                     </button>
                 </div>
-                <label class="option-title">
-                    <h2>04  La touche en plus</h2>
+
+                <label class="option-title" id="supplément">
+                    <h2>04 La touche en plus</h2>
                     <p>Plusieurs choix</p>
                 </label>
+
                 <div class="selection-menu topping-menu" id="multiple">
                     <button type="button" class="optionbtn">
                         <h2></h2>
                         <h3 class="price"></h3>
                     </button>
+
                     <button type="button" class="optionbtn">
                         <h2></h2>
                         <h3 class="price"></h3>
                     </button>
                 </div>
-                <label><p>Le prix évolue selon vos choix. Vous pourrez les modifier au récapitulatif.</p></label>
+
+                <label>
+                    <p>
+                        Le prix évolue selon vos choix. Vous pourrez les modifier au récapitulatif.
+                    </p>
+                </label>
             </form>
         </section>
+
         <section class="total personalize-section">
             <div class="price-container">
                 <h2>Total</h2>
+
                 <div class="price" id="priceTotal">
-                    <span>29,00</span> DH
+                    <span>18,00</span> DH
                 </div>
             </div>
-            <button type="submit" id="addToCart">Ajouter au panier   →</button>
+
+            <button
+                type="submit"
+                id="addToCart"
+                onclick="getPickedElements()"
+            >
+                Ajouter au panier →
+            </button>
         </section>
+
         <section id="checkout" class="hidden">
             <div class="form-heading" style="margin-top: 20px;">
                 <h2>VOTRE CRÉATION EST PRÊTE</h2>
-                <h1>Votre moment café,<br> exactement comme vous l’aimez.</h1>
-            </div> 
+
+                <h1>
+                    Votre moment café,<br>
+                    exactement comme vous l’aimez.
+                </h1>
+            </div>
+
             <div class="checkout">
                 <div class="figure">
                     <figure>
                         <div class="figheading">
-                            <span class="badge">LE CAFÉ, À VOTRE FAÇON</span><span class="date">01 / 04</span>
+                            <span class="badge">LE CAFÉ, À VOTRE FAÇON</span>
+                            <span class="date">01 / 04</span>
                         </div>
+
                         <img src="assets/images/coffe.png" alt="" srcset="">
+
                         <figcaption>
                             <h2>Un petit rituel. Beaucoup de vous.</h2>
                             <h3>ESPRESSO · M · AVOINE · CARAMEL</h3>
                         </figcaption>
                     </figure>
+
                     <div class="modify-selection">
                         <div class="title">
                             <h2>Votre café signature</h2>
                             <h3>Espresso · M · Avoine · Caramel</h3>
                         </div>
+
                         <a id="modifyButton">Modifier</a>
                     </div>
                 </div>
+
                 <article class="billet">
-                    <div class="badge">✓  Sélection ajoutée</div>
+                    <div class="badge">✓ Sélection ajoutée</div>
+
                     <h2>Votre récapitulatif</h2>
-                    <h3>Une création personnalisée · Quantité : 1</h3>
+
+                    <h3>
+                        Une création personnalisée · Quantité : 1
+                    </h3>
+
                     <div class="seperator"></div>
+
                     <table>
                         <tbody>
                             <tr>
-                                <td>Base · Espresso</td>
-                                <td><span>18,00 DH</span></td>
+                                <td>
+                                    Base · <span class="base"></span>
+                                </td>
+
+                                <td>
+                                    <span class="td-price base-price"></span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Taille · <span class="taille"></span>
+                                </td>
+
+                                <td>
+                                    <span class="td-price taille-price"></span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Lait · <span class="lait"></span>
+                                </td>
+                                <td><span class="td-price lait-price"></span></td>
                             </tr>
                             <tr>
-                                <td>Taille · M / 250 ml</td>
-                                <td><span>4,00 DH</span></td>
-                            </tr>
-                            <tr>
-                                <td>Lait · Avoine</td>
-                                <td><span>4,00 DH</span></td>
-                            </tr>
-                            <tr>
-                                <td>Supplément · Caramel</td>
-                                <td><span>3,00 DH</span></td>
+                                <td>Supplément <span class="supplément"></span></td>
+                                <td><span class="td-price supplément-price"></span></td>
                             </tr>
                             <tfoot>
                                 <tr>
                                     <td>Total</td>
-                                    <td><span>29,00 DH</span></td>
+                                    <td><span id="total-price"></span></td>
                                 </tr>
                             </tfoot>
                         </tbody>
