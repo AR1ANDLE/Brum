@@ -65,16 +65,38 @@
     }
     .order-container > .payment-form {
         width: 100%;
-        min-height: 80vh;
+        min-height: 70vh;
         gap: 5px;
     }
-    .payment-form > label {
-        width: 45%;
-        margin: 10px 0;
+    .payment-form > div > label {
+        width: 50%;
+        height: 100%;
     }
+
     .payment-form > .tall {
-        width: 93%;
+        width: 90%;
     }
+    .payment-form label {
+        height: 40px;
+        font-family: 'Playfair Display';
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 12px;
+        color: var(--coffe-text);
+    }
+    .payment-form label span{
+        margin : 0 0 0 5px;
+    }
+    .payment-form label input {
+        width: 100%;
+        height: 100%;
+        background-color: var(--coffe-background);
+        border-radius: 10px;
+        border: 1px solid var(--coffe-border);
+        box-shadow: 3px 3px 5px var(--coffe-muted);
+        padding: 0 15px;
+    }
+    
 }
 
 @media screen and (min-width: 768px) {

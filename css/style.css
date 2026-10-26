@@ -477,12 +477,11 @@ tfoot > tr > td > span {
     padding: 5%;
 }
 
-.payment-form > label{
-    width: 50%;
-    max-width: 400px;
+.payment-form div{
+    width: 90%;
+    display: flex;
     height: 40px;
-    background-color: red;
-    border: 2px solid #000;
+    gap: 5px;
 }
 
 .payment-form > .tall {
