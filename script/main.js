@@ -19,6 +19,8 @@ const config = {
   }
 }
 
+const tickets = []
+
 let menuCrumb = document.getElementById('menuCrumb')
 let checkoutCrumb = document.getElementById('checkoutCrumb')
 let modifyButton = document.getElementById('modifyButton')
@@ -38,7 +40,6 @@ function toCheckout() {
     menuCrumb.classList.remove('active')
     checkoutCrumb.classList.add('active')
 
-    window.location(0, 0)
 }
 
 function toMenu() {
@@ -136,11 +137,13 @@ function getPickedItems() {
         base: {},
         taille : {},
         lait: {name: 'without milk', price: 'Free'},
-        supplements: {name: 'no topping', price: 'Free'}
+        supplements: {name: 'no topping', price: 'Free'},
     }
+    let ticketTotal = 0;
     pickedOptions.forEach(pick => {
         ticket[pick.dataset.category].name = pick.dataset.key
         ticket[pick.dataset.category].price = pick.querySelector('h3').innerText
+        ticketTotal += ticket[pick.dataset.category].price;
     })
     if(Object.entries(ticket.base).length === 0){
         alert('Please select a base option any addons')
@@ -150,6 +153,8 @@ function getPickedItems() {
         alert('Please pick a valid size')
         return
     }
+    tickets.push(ticket)
+    localStorage.setItem('Tickets', JSON.stringify(tickets))    
     return ticket;
 }
 
@@ -181,5 +186,43 @@ function displayTicket() {
     toCheckout()
 }
 
+// Inject Tickets in cart section
+
+function injectTickets() {
+    const cartSection = document.getElementById('cart-container')
+    const tickets = JSON.parse(localStorage.getItem('Tickets'))
+
+    if(tickets.length === 0){return;}
+
+    cartSection.innerHTML = `
+        <h1>You Have ${tickets.length} tickets.</h1>
+        <table> <tbody>
+    `
+
+    tickets.forEach((ticket, index)=> {
+
+        const row = Object.entries(ticket)
+        
+        
+        cartSection.innerHTML += `
+            <article>
+                <h2>Ticket ${index + 1}</h2>
+                <table>
+                    <tbody>${row}</tbody>
+                    <tfoot>${ticket.total}</tfoot>
+                </table>
+                
+            </article>
+        `
+    })
+}
 
 selectedButtons()
+
+
+// Cart section 
+
+// inject tickets
+const shoppingCart = document.getElementById('shoppingCart')
+
+shoppingCart.addEventListener('click', () => {window.location.href = 'checkout.html'})

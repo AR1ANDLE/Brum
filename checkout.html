@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRUME - Personnaliser votre café</title>
+
+    <!-- Links -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style type="text/tailwindcss">
+        @theme {
+            --color-text : #30291F;
+            --color-accent : #394B32;
+            --color-muted : #796A59;
+            --color-stage: #E8DBC7;
+            --color-border : #dfd5c8;
+            --color-background : #FAF7F0;
+            --color-selected : #E9EEDC;
+            --font-heading: "Bricolage Grotesque", sans-serif;
+            --font-body: "DM Sans", sans-serif;
+            --font-display: "Playfair Display", serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="heading">
+        <h2 class="txt-sm">
+            Du grain à votre tasse. Un café qui vous ressemble.
+        </h2>
+    </div>
+
+    <header>
+        <div class="logo menu">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-coffee preview-icon"
+            >
+                <path d="M10 2v2"/>
+                <path d="M14 2v2"/>
+                <path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/>
+                <path d="M6 2v2"/>
+            </svg>
+
+            <h2>BRUME</h2>
+        </div>
+
+        <nav>
+            <a href="./index.html">L’atelier café</a>
+            <a href="#">Notre savoir-faire</a>
+            <a href="#">Besoin d’aide ?</a>
+        </nav>
+
+        <div class="shopicon" id="shoppingCart">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-handbag preview-icon"
+            >
+                <path d="M2.048 18.566A2 2 0 0 0 4 21h16a2 2 0 0 0 1.952-2.434l-2-9A2 2 0 0 0 18 8H6a2 2 0 0 0-1.952 1.566z"/>
+                <path d="M8 11V6a4 4 0 0 1 8 0v5"/>
+            </svg>
+
+            <h2 class="shop-count">1</h2>
+        </div>
+    </header>
+
+    <main>
+
+    </main>
+
+
+    <script src="script/main.js"></script>
+</body>
+</html>

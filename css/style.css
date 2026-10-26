@@ -9,12 +9,10 @@
     --coffe-background : #FAF7F0;
     --coffe-selected : #E9EEDC;
 }
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-decoration: none;
 }
 
 button, input, a {
@@ -106,7 +104,6 @@ main {
 figure {
     width: 100%;
     max-width: 900px;
-    max-height: max-content;
     margin-top: 10px;
     border-radius: 20px;
     background-color: var(--coffe-stage);
@@ -203,7 +200,7 @@ form {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    margin: 15px 0;
+    margin: 5px 0;
 }
 
 label > h2 {
@@ -233,11 +230,14 @@ label > p {
 }
 
 .total {
-    height: 60px;
+    height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 3% 0;
     padding: 0 3%;
+    background-color: var();
+    border-radius: 10px;
 }
 
 .price-container > h2 {
@@ -260,7 +260,7 @@ label > p {
 .total > button {
     width: 65%;
     max-width: 300px;
-    height: 80%;
+    height: 60%;
     background-color: var(--coffe-accent);
     border-radius: 12px;
     color: #fff;
@@ -269,6 +269,12 @@ label > p {
     font-style: Medium;
     font-size: 16px;
     text-align: center;
+    box-shadow: 2px 3px 7px #30291F;
+}
+.total > button:hover {
+    background-color: var(--coffe-stage);
+    border: 1px solid var(--coffe-accent);
+    transition: all ease-in-out 0.8ms;
 }
 
 footer {
@@ -424,3 +430,5 @@ tfoot > tr > td > span {
 .hidden {
     display: none !important;
 }
+
+
