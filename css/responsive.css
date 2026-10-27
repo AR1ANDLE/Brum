@@ -70,9 +70,11 @@
     .order-container > .payment-form {
         display: flex;
         justify-content: space-evenly;
-        min-height: 60vh;
+        min-height: 70vh;
         width: 100%;
         gap: 5px;
+        margin: 0;
+        padding: 5px 0;
     }
     .payment-form > div > label {
         width: 50%;
@@ -96,13 +98,36 @@
     .payment-form label input {
         width: 100%;
         height: 100%;
-        background-color: var(--coffe-background);
         border-radius: 10px;
+        background-color: #fff;
         border: 1px solid var(--coffe-border);
-        box-shadow: 3px 3px 5px var(--coffe-muted);
         padding: 0 15px;
+    }    
+    .panier-container {
+        min-height: 100vh;
+        background-color: red;
+        display: flex;
+        flex-direction: column;
     }
-    
+    .coffe-container {
+        height: 100vh;
+        width: 100%;
+        background-color: aqua;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    .panier-container .s-heading {
+        font-size: 14px;
+    }
+
+    .total-section {
+        width: 100%;
+        height: 30vh;
+        background-color: pink;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -155,15 +180,24 @@
         width: 100%;
         justify-content: center;
         align-items: center;
-        
+        gap: 15px;
     }
     .order-container > figure {
         margin: 0;
-        width: 40%;
-        height: 65vh;
-    } 
+        width: 60%;
+        max-height: 75vh;
+    
+    }
+    .order-container > figure > figcaption {
+        top: -65px;
+    }
     .order-container > .payment-form {
-        min-height: 65vh;
+        max-height: 75vh;
+        gap: 5px;
+        padding: 0;
         margin: 0;
-    } 
+    }
+    .panier-content {
+        display: flex;
+    }
 }

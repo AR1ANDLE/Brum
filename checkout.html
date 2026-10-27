@@ -87,7 +87,19 @@
     </header>
 
     <main>
-        <section class="order-container">
+        
+        <section class="breadcrumb">
+            <h2>
+                01 Votre Panier
+            </h2>
+
+            —
+
+            <h2 class="active">
+                02 Terminer l'achat
+            </h2>
+        </section>
+        <section class="order-container hidden">
             <figure>
                 <div class="figheading">
                     <span class="badge">Order now</span>
@@ -102,37 +114,54 @@
                 <div>
                     <label>
                         <span>Name</span>
-                        <input type="text">
+                        <input type="text" data-name="name" placeholder="Prénom">
                     </label>
                     <label for="">
                         <span>Last Name</span>
-                        <input type="text">
+                        <input type="text" data-name="name" placeholder="Nom">
                     </label>
                 </div>
                 <label for="" class="tall">
                     <span>Email</span>
-                    <input type="email">
+                    <input type="email" data-name="mail" placeholder="email@example.com">
                 </label>
                 <label for="" class="tall">
                     <span>Card Number</span>
-                    <input type="email">
+                    <input type="text" inputmode="numeric" data-name="cardNumber" placeholder="XXXX XXXX XXXX XXXX">
                 </label>
                 <div>
                     <label for="">
                         <span>CVV</span>
-                        <input type="email"></label>
+                        <input type="text" inputmode="numeric" data-name="cvv" placeholder="XXX">
+                    </label>
                     <label for="">
                         <span>Experation Date</span>
-                        <input type="email">
+                        <input type="text" inputmode="numeric" placeholder="MM/YY" data-name="expirationDate">
                     </label>
                 </div>
+                <button id="submit" type="button">Validate payment</button>
             </form>
         </section>
-        <section class="order-list"></section>
+
+        <section class="panier-container">
+            <h1>Votre Panier</h1>
+            <p class="s-heading">Le café de votre choix</p>
+            <div class="panier-content">
+                <div class="coffe-container">
+                    <h2>Votre Sélection</h2>
+                    <div class="">
+                        <article></article>
+                        <article></article>
+                    </div>
+                </div>
+                <div class="total-section">
+                </div>
+            </div>
+        </section>
 
     </main>
 
 
-    <script src="script/main.js"></script>
+    <script src="script/cart.js"></script>
 </body>
 </html>
