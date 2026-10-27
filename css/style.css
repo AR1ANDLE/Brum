@@ -9,12 +9,10 @@
     --coffe-background : #FAF7F0;
     --coffe-selected : #E9EEDC;
 }
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-decoration: none;
 }
 
 button, input, a {
@@ -23,8 +21,6 @@ button, input, a {
 a{
     color: #fff;
 }
-
-
 
 
 .optionbtn {
@@ -106,7 +102,6 @@ main {
 figure {
     width: 100%;
     max-width: 900px;
-    max-height: max-content;
     margin-top: 10px;
     border-radius: 20px;
     background-color: var(--coffe-stage);
@@ -153,16 +148,14 @@ figcaption {
     top: -25px;
 }
 
-figcaption > h2 {
+.m-heading {
     font-family: "Playfair Display";
     font-weight: 500;
     font-style: Medium;
     font-size: 24px;
     letter-spacing: 0%;
-    text-align: center;
 }
-
-figcaption > h3 {
+.s-heading {
     font-family: "DM Sans";
     font-weight: 400;
     font-size: 10px;
@@ -182,7 +175,7 @@ form {
     color: var(--coffe-accent);
 }
 
-.form-heading h1 {
+h1 {
     font-family: 'Playfair Display';
     font-weight: 500;
     font-style: Medium;
@@ -203,7 +196,7 @@ form {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    margin: 15px 0;
+    margin: 5px 0;
 }
 
 label > h2 {
@@ -233,11 +226,14 @@ label > p {
 }
 
 .total {
-    height: 60px;
+    height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 3% 0;
     padding: 0 3%;
+    background-color: var();
+    border-radius: 10px;
 }
 
 .price-container > h2 {
@@ -260,7 +256,7 @@ label > p {
 .total > button {
     width: 65%;
     max-width: 300px;
-    height: 80%;
+    height: 60%;
     background-color: var(--coffe-accent);
     border-radius: 12px;
     color: #fff;
@@ -269,6 +265,12 @@ label > p {
     font-style: Medium;
     font-size: 16px;
     text-align: center;
+    box-shadow: 2px 3px 7px #30291F;
+}
+.total > button:hover {
+    background-color: var(--coffe-stage);
+    border: 1px solid var(--coffe-accent);
+    transition: all ease-in-out 0.8ms;
 }
 
 footer {
@@ -423,4 +425,58 @@ tfoot > tr > td > span {
 
 .hidden {
     display: none !important;
+}
+
+.order-container > figure > img {
+    object-fit: contain;
+}
+
+.order-container > figure > figcaption {
+    position: relative;
+    text-align: center;
+    top: -30px;
+}
+
+.order-container > figure > figcaption > .m-heading {
+    font-size: 20px;
+}
+
+.order-container > form {
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1%;
+    padding: 5%;
+}
+
+.payment-form div{
+    width: 90%;
+    display: flex;
+    height: 40px;
+    gap: 3px;
+}
+
+.payment-form > .tall {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.payment-form > button {
+    width: 40%;
+    height: 50px;
+    margin-top: 20px;
+    padding: 0;
+    border-radius: 15px;
+    border: 1px solid var(--coffe-border);
+    background-color: var(--coffe-stage);
+    margin-bottom: 0;
+    align-self: flex-end;
+}
+
+.coffe-container article{
+    width: 300px;
+    height: 300px;
+    background-color: pink;
 }

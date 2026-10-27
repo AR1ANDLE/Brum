@@ -19,41 +19,42 @@ const config = {
   }
 }
 
-let menuCrumb = document.getElementById('menuCrumb')
-let checkoutCrumb = document.getElementById('checkoutCrumb')
-let modifyButton = document.getElementById('modifyButton')
+const tickets = []
 
-const menubuttons = [menuCrumb, modifyButton, document.querySelector('.logo')]
-menubuttons.forEach(btn => {
-    btn.addEventListener('click', toMenu)
-}) 
+// let menuCrumb = document.getElementById('menuCrumb')
+// let checkoutCrumb = document.getElementById('checkoutCrumb')
+// let modifyButton = document.getElementById('modifyButton')
 
-function toCheckout() {
-    const menuSection = document.querySelectorAll('.personalize-section')
-    document.getElementById('checkout').classList.remove('hidden') 
+// const menubuttons = [menuCrumb, modifyButton, document.querySelector('.logo')]
+// menubuttons.forEach(btn => {
+//     btn.addEventListener('click', toMenu)
+// }) 
 
-    menuSection.forEach(section => {
-        section.classList.add('hidden')
-    })
-    menuCrumb.classList.remove('active')
-    checkoutCrumb.classList.add('active')
+// function toCheckout() {
+//     const menuSection = document.querySelectorAll('.personalize-section')
+//     document.getElementById('checkout').classList.remove('hidden') 
 
-    window.location(0, 0)
-}
+//     menuSection.forEach(section => {
+//         section.classList.add('hidden')
+//     })
+//     menuCrumb.classList.remove('active')
+//     checkoutCrumb.classList.add('active')
 
-function toMenu() {
-    const menuSection = document.querySelectorAll('.personalize-section')
-    document.getElementById('checkout').classList.add('hidden') 
+// }
 
-    menuSection.forEach(section => {
-        section.classList.remove('hidden')
-    })
+// function toMenu() {
+//     const menuSection = document.querySelectorAll('.personalize-section')
+//     document.getElementById('checkout').classList.add('hidden') 
+
+//     menuSection.forEach(section => {
+//         section.classList.remove('hidden')
+//     })
     
-    menuCrumb.classList.add('active')
-    checkoutCrumb.classList.remove('active')
+//     menuCrumb.classList.add('active')
+//     checkoutCrumb.classList.remove('active')
     
-    window.location(0, 0)
-}
+//     window.scrollTo(0, 0)
+// }
 
 const menuSection = document.getElementById('menu')
 const formElement = menuSection.querySelector('form')
@@ -136,11 +137,13 @@ function getPickedItems() {
         base: {},
         taille : {},
         lait: {name: 'without milk', price: 'Free'},
-        supplements: {name: 'no topping', price: 'Free'}
+        supplements: {name: 'no topping', price: 'Free'},
     }
+    let ticketTotal = 0;
     pickedOptions.forEach(pick => {
         ticket[pick.dataset.category].name = pick.dataset.key
         ticket[pick.dataset.category].price = pick.querySelector('h3').innerText
+        ticketTotal += ticket[pick.dataset.category].price;
     })
     if(Object.entries(ticket.base).length === 0){
         alert('Please select a base option any addons')
@@ -150,6 +153,8 @@ function getPickedItems() {
         alert('Please pick a valid size')
         return
     }
+    tickets.push(ticket)
+    localStorage.setItem('Tickets', JSON.stringify(tickets))    
     return ticket;
 }
 
@@ -181,5 +186,36 @@ function displayTicket() {
     toCheckout()
 }
 
+// Inject Tickets in cart section
+
+function injectTickets() {
+    const cartSection = document.getElementById('cart-container')
+    const tickets = JSON.parse(localStorage.getItem('Tickets'))
+
+    if(tickets.length === 0){return;}
+
+    cartSection.innerHTML = `
+        <h1>You Have ${tickets.length} tickets.</h1>
+        <table> <tbody>
+    `
+
+    tickets.forEach((ticket, index)=> {
+
+        const row = Object.entries(ticket)
+        
+        
+        cartSection.innerHTML += `
+            <article>
+                <h2>Ticket ${index + 1}</h2>
+                <table>
+                    <tbody>${row}</tbody>
+                    <tfoot>${ticket.total}</tfoot>
+                </table>
+                
+            </article>
+        `
+    })
+}
 
 selectedButtons()
+
