@@ -475,8 +475,40 @@ tfoot > tr > td > span {
     align-self: flex-end;
 }
 
-.coffe-container article{
-    width: 300px;
-    height: 300px;
-    background-color: pink;
+.card-container > article{
+    border: 2px solid var(--coffe-border);
+    border-radius: 20px;
+    color: var(--coffe-text);
+    padding: 2% 5%;
+}
+
+article > figure {
+    width: 100%;
+    height: 60%;
+}
+
+article > figure > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+article > .add-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.add-container > button {
+    width: 50%;
+    background-color: var(--coffe-muted);
+    border-radius: 20px;
+    color: #fff;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--coffe-border);
 }

@@ -105,28 +105,32 @@
     }    
     .panier-container {
         min-height: 100vh;
-        background-color: red;
+        border-radius: 20px;
         display: flex;
         flex-direction: column;
     }
-    .coffe-container {
-        height: 100vh;
-        width: 100%;
-        background-color: aqua;
+    .card-container {
+        min-height: 100vh;
+        max-height: max-content;
+        width: 80%;
+        border-radius: 20px;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-auto-rows: minmax(200px, 380px);
         gap: 15px;
+        margin: 10px 0;
+    }
+    .panier-container > h1 {
+        width: 100%;
+        border-radius: 20px 20px 0 0;
+        padding: 10px 0 0 10px;
+        margin: 10px 0 0 0;
+
     }
 
     .panier-container .s-heading {
         font-size: 14px;
-    }
-
-    .total-section {
-        width: 100%;
-        height: 30vh;
-        background-color: pink;
+        padding: 0 0px 10px 10px;
     }
 }
 
@@ -198,6 +202,7 @@
         margin: 0;
     }
     .panier-content {
-        display: flex;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
     }
 }
