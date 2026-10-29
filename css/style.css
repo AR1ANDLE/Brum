@@ -503,7 +503,8 @@ article > .add-container {
 
 .add-container > button {
     width: 50%;
-    background-color: var(--coffe-muted);
+    padding: 5px 0;
+    background-color: var(--coffe-accent);
     border-radius: 20px;
     color: #fff;
     font-size: 18px;
@@ -511,4 +512,103 @@ article > .add-container {
     justify-content: center;
     align-items: center;
     border: 1px solid var(--coffe-border);
+}
+
+.total-section button {
+    width: 90%;
+    margin: 20px;
+    padding: 10px 0;
+    align-self: center;
+    justify-self: center;
+    background-color: var(--coffe-accent);
+    border-radius: 20px;
+    color: #fff;
+    font-family: DM Sans;
+    font-weight: 500;
+}
+
+#quickSearch {
+    width: 80px;
+    height: 20vh;
+    border-radius: 20px;
+    background-color: var(--coffe-accent);
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    gap: 10px;
+    text-orientation: upright;
+    text-align: center;
+}
+
+.pop-up {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    width: 95%;
+    height: 95vh;
+    background-color: #394b328c;
+    backdrop-filter: blur(20px);
+    box-shadow: 5px 5px 10px #000;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2% 3%;
+}
+
+.pop-up > input {
+    width: 90%;
+    height: 50px;
+    background-color: #dfd5c8;
+    border-radius: 20px;
+    padding: 2% 3%;
+    font-family: "Playfair Display";
+    letter-spacing: 5%;
+    box-shadow: 3px 3px 5px var(--coffe-muted);
+    color: var(--coffe-muted);
+}
+
+.pop-up > .catalog {
+    width: 95%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 380px;
+    gap: 10px;
+    padding: 0 10px;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+.pop-up > .catalog > article {
+    background-color: var(--coffe-stage);
+    border: 2px solid var(--coffe-border);
+    border-radius: 20px;
+    color: var(--coffe-text);
+    padding: 2% 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.pop-up button {
+    background-color: var(--coffe-accent);
+    width: 100%;
+    padding: 8px 0;
+    border-radius: 20px;
+    color: #fff;
+    align-self: center;
+    justify-self: center;
+}
+
+.pop-up img {
+    object-fit: fill;
 }
