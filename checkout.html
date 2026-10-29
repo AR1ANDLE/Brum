@@ -82,14 +82,14 @@
                 <path d="M8 11V6a4 4 0 0 1 8 0v5"/>
             </svg>
 
-            <h2 class="shop-count">1</h2>
+            <h2 class="shopCount">1</h2>
         </div>
     </header>
 
     <main>
         
         <section class="breadcrumb">
-            <h2>
+            <h2 onclick="toPanier()">
                 01 Votre Panier
             </h2>
 
@@ -99,7 +99,7 @@
                 02 Terminer l'achat
             </h2>
         </section>
-        <section class="order-container hidden">
+        <section class="order-container">
             <figure>
                 <div class="figheading">
                     <span class="badge">Order now</span>
@@ -142,26 +142,8 @@
                 <button id="submit" type="button">Validate payment</button>
             </form>
         </section>
-
-        <section class="panier-container">
-            <h1>Votre Panier</h1>
-            <p class="s-heading">Le café de votre choix</p>
-            <div class="panier-content">
-                <div class="coffe-container">
-                    <h2>Votre Sélection</h2>
-                    <div class="">
-                        <article></article>
-                        <article></article>
-                    </div>
-                </div>
-                <div class="total-section">
-                </div>
-            </div>
-        </section>
-
     </main>
-
-
+    <script src="script/navigation.js"></script>
     <script src="script/cart.js"></script>
 </body>
 </html>

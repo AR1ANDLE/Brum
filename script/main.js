@@ -21,40 +21,6 @@ const config = {
 
 const tickets = []
 
-// let menuCrumb = document.getElementById('menuCrumb')
-// let checkoutCrumb = document.getElementById('checkoutCrumb')
-// let modifyButton = document.getElementById('modifyButton')
-
-// const menubuttons = [menuCrumb, modifyButton, document.querySelector('.logo')]
-// menubuttons.forEach(btn => {
-//     btn.addEventListener('click', toMenu)
-// }) 
-
-// function toCheckout() {
-//     const menuSection = document.querySelectorAll('.personalize-section')
-//     document.getElementById('checkout').classList.remove('hidden') 
-
-//     menuSection.forEach(section => {
-//         section.classList.add('hidden')
-//     })
-//     menuCrumb.classList.remove('active')
-//     checkoutCrumb.classList.add('active')
-
-// }
-
-// function toMenu() {
-//     const menuSection = document.querySelectorAll('.personalize-section')
-//     document.getElementById('checkout').classList.add('hidden') 
-
-//     menuSection.forEach(section => {
-//         section.classList.remove('hidden')
-//     })
-    
-//     menuCrumb.classList.add('active')
-//     checkoutCrumb.classList.remove('active')
-    
-//     window.scrollTo(0, 0)
-// }
 
 const menuSection = document.getElementById('menu')
 const formElement = menuSection.querySelector('form')
