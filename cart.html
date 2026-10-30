@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRUME - Personnaliser votre café</title>
+
+    <!-- Links -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <div class="heading">
+        <h2 class="txt-sm">
+            Du grain à votre tasse. Un café qui vous ressemble.
+        </h2>
+    </div>
+
+    <header>
+        <div class="logo menu" onclick="home()">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-coffee preview-icon"
+            >
+                <path d="M10 2v2"/>
+                <path d="M14 2v2"/>
+                <path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/>
+                <path d="M6 2v2"/>
+            </svg>
+
+            <h2>BRUME</h2>
+        </div>
+
+        <nav>
+            <a href="./index.html">L’atelier café</a>
+            <a href="#">Notre savoir-faire</a>
+            <a href="#">Besoin d’aide ?</a>
+        </nav>
+
+        <div class="shopicon" id="shoppingCart" onclick="toPanier()">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-handbag preview-icon"
+            >
+                <path d="M2.048 18.566A2 2 0 0 0 4 21h16a2 2 0 0 0 1.952-2.434l-2-9A2 2 0 0 0 18 8H6a2 2 0 0 0-1.952 1.566z"/>
+                <path d="M8 11V6a4 4 0 0 1 8 0v5"/>
+            </svg>
+
+            <h2 class="shopCount">1</h2>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="breadcrumb">
+            <h2>
+                01 Votre Panier
+            </h2>
+
+            —
+
+            <h2 class="active">
+                02 Terminer l'achat
+            </h2>
+        </section>
+        <section class="order-container hidden">
+            <figure>
+                <div class="figheading">
+                    <span class="badge">Order now</span>
+                </div>
+                <img src="assets/images/coffe.png" alt="">
+                <figcaption>
+                    <h1 class="m-heading">The coffe that you need wherever you need it.</h1>
+                    <h3 class="s-heading">ESPRESSO · Machiato · Cappuccino · Latte</h3>
+                </figcaption>
+            </figure>
+            <form class="payment-form">
+                <div>
+                    <label>
+                        <span>Name</span>
+                        <input type="text" data-name="name" placeholder="Prénom">
+                    </label>
+                    <label for="">
+                        <span>Last Name</span>
+                        <input type="text" data-name="name" placeholder="Nom">
+                    </label>
+                </div>
+                <label for="" class="tall">
+                    <span>Email</span>
+                    <input type="email" data-name="mail" placeholder="email@example.com">
+                </label>
+                <label for="" class="tall">
+                    <span>Card Number</span>
+                    <input type="text" inputmode="numeric" data-name="cardNumber" placeholder="XXXX XXXX XXXX XXXX">
+                </label>
+                <div>
+                    <label for="">
+                        <span>CVV</span>
+                        <input type="text" inputmode="numeric" data-name="cvv" placeholder="XXX">
+                    </label>
+                    <label for="">
+                        <span>Experation Date</span>
+                        <input type="text" inputmode="numeric" placeholder="MM/YY" data-name="expirationDate">
+                    </label>
+                </div>
+                <button id="submit" type="button">Validate payment</button>
+            </form>
+        </section>
+
+        <section class="panier-container">
+            <h1>Votre Panier</h1>
+            <p class="s-heading">Le café de votre choix</p>
+            <div class="panier-content">
+                    <div class="card-container">
+                    </div>
+                <div class="total-section">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <button id="quickSearch">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search preview-icon"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        <h2>Quick Search</h2>
+    </button>
+    <div class="pop-up hidden">
+        <input type="search" id="liveSearch" placeholder="Search the catalog...">
+        <div class="catalog">
+        </div>
+    </div>
+    <script src="script/navigation.js"></script>
+    <script src="script/cart.js"></script>
+</body>
+</html>

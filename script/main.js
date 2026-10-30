@@ -19,44 +19,48 @@ const config = {
   }
 }
 
-let menuCrumb = document.getElementById('menuCrumb')
-let checkoutCrumb = document.getElementById('checkoutCrumb')
-let modifyButton = document.getElementById('modifyButton')
+const tickets = []
+
+
+
+
+const menuSection = document.getElementById('menu') ?? false
+const formElement = menuSection.querySelector('form')
+
+let menuCrumb = document.getElementById('menuCrumb') ?? false
+let checkoutCrumb = document.getElementById('checkoutCrumb') ?? false
+let modifyButton = document.getElementById('modifyButton') ?? false
+const menuList = document.querySelectorAll('.personalize-section')
 
 const menubuttons = [menuCrumb, modifyButton, document.querySelector('.logo')]
 menubuttons.forEach(btn => {
-    btn.addEventListener('click', toMenu)
-}) 
+        btn.addEventListener('click', toMenu)
+    }) 
 
 function toCheckout() {
-    const menuSection = document.querySelectorAll('.personalize-section')
-    document.getElementById('checkout').classList.remove('hidden') 
-
-    menuSection.forEach(section => {
-        section.classList.add('hidden')
-    })
+if(!menuSection) {
+    return
+}
+document.getElementById('checkout').classList.remove('hidden') 
+    menuList.forEach(section => section.classList.add('hidden'))
     menuCrumb.classList.remove('active')
     checkoutCrumb.classList.add('active')
 
-    window.location(0, 0)
+    window.scrollTo(0, 0)
 }
 
-function toMenu() {
-    const menuSection = document.querySelectorAll('.personalize-section')
-    document.getElementById('checkout').classList.add('hidden') 
+    function toMenu() {
+        document.getElementById('checkout').classList.add('hidden') 
 
-    menuSection.forEach(section => {
-        section.classList.remove('hidden')
-    })
-    
-    menuCrumb.classList.add('active')
-    checkoutCrumb.classList.remove('active')
-    
-    window.location(0, 0)
-}
-
-const menuSection = document.getElementById('menu')
-const formElement = menuSection.querySelector('form')
+        menuList.forEach(section => {
+            section.classList.remove('hidden')
+        })
+        
+        menuCrumb.classList.add('active')
+        checkoutCrumb.classList.remove('active')
+        
+        window.scrollTo(0, 0)
+    }
 
 let menuHTML = ''
 let total = 0;
@@ -136,11 +140,13 @@ function getPickedItems() {
         base: {},
         taille : {},
         lait: {name: 'without milk', price: 'Free'},
-        supplements: {name: 'no topping', price: 'Free'}
+        supplements: {name: 'no topping', price: 'Free'},
     }
+    let ticketTotal = 0;
     pickedOptions.forEach(pick => {
         ticket[pick.dataset.category].name = pick.dataset.key
         ticket[pick.dataset.category].price = pick.querySelector('h3').innerText
+        ticketTotal += ticket[pick.dataset.category].price;
     })
     if(Object.entries(ticket.base).length === 0){
         alert('Please select a base option any addons')
@@ -150,6 +156,8 @@ function getPickedItems() {
         alert('Please pick a valid size')
         return
     }
+    tickets.push(ticket)
+    localStorage.setItem('Tickets', JSON.stringify(tickets))    
     return ticket;
 }
 
@@ -181,5 +189,36 @@ function displayTicket() {
     toCheckout()
 }
 
+// Inject Tickets in cart section
+
+function injectTickets() {
+    const cartSection = document.getElementById('cart-container')
+    const tickets = JSON.parse(localStorage.getItem('Tickets'))
+
+    if(tickets.length === 0){return;}
+
+    cartSection.innerHTML = `
+        <h1>You Have ${tickets.length} tickets.</h1>
+        <table> <tbody>
+    `
+
+    tickets.forEach((ticket, index)=> {
+
+        const row = Object.entries(ticket)
+        
+        
+        cartSection.innerHTML += `
+            <article>
+                <h2>Ticket ${index + 1}</h2>
+                <table>
+                    <tbody>${row}</tbody>
+                    <tfoot>${ticket.total}</tfoot>
+                </table>
+                
+            </article>
+        `
+    })
+}
 
 selectedButtons()
+

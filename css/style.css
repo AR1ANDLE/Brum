@@ -9,12 +9,10 @@
     --coffe-background : #FAF7F0;
     --coffe-selected : #E9EEDC;
 }
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-decoration: none;
 }
 
 button, input, a {
@@ -23,8 +21,6 @@ button, input, a {
 a{
     color: #fff;
 }
-
-
 
 
 .optionbtn {
@@ -106,7 +102,6 @@ main {
 figure {
     width: 100%;
     max-width: 900px;
-    max-height: max-content;
     margin-top: 10px;
     border-radius: 20px;
     background-color: var(--coffe-stage);
@@ -153,16 +148,14 @@ figcaption {
     top: -25px;
 }
 
-figcaption > h2 {
+.m-heading {
     font-family: "Playfair Display";
     font-weight: 500;
     font-style: Medium;
     font-size: 24px;
     letter-spacing: 0%;
-    text-align: center;
 }
-
-figcaption > h3 {
+.s-heading {
     font-family: "DM Sans";
     font-weight: 400;
     font-size: 10px;
@@ -182,7 +175,7 @@ form {
     color: var(--coffe-accent);
 }
 
-.form-heading h1 {
+h1 {
     font-family: 'Playfair Display';
     font-weight: 500;
     font-style: Medium;
@@ -203,7 +196,7 @@ form {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    margin: 15px 0;
+    margin: 5px 0;
 }
 
 label > h2 {
@@ -233,11 +226,14 @@ label > p {
 }
 
 .total {
-    height: 60px;
+    height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 3% 0;
     padding: 0 3%;
+    background-color: var();
+    border-radius: 10px;
 }
 
 .price-container > h2 {
@@ -260,7 +256,7 @@ label > p {
 .total > button {
     width: 65%;
     max-width: 300px;
-    height: 80%;
+    height: 60%;
     background-color: var(--coffe-accent);
     border-radius: 12px;
     color: #fff;
@@ -269,6 +265,12 @@ label > p {
     font-style: Medium;
     font-size: 16px;
     text-align: center;
+    box-shadow: 2px 3px 7px #30291F;
+}
+.total > button:hover {
+    background-color: var(--coffe-stage);
+    border: 1px solid var(--coffe-accent);
+    transition: all ease-in-out 0.8ms;
 }
 
 footer {
@@ -423,4 +425,232 @@ tfoot > tr > td > span {
 
 .hidden {
     display: none !important;
+}
+
+.order-container > figure > img {
+    object-fit: contain;
+}
+
+.order-container > figure > figcaption {
+    position: relative;
+    text-align: center;
+    top: -30px;
+}
+
+.order-container > figure > figcaption > .m-heading {
+    font-size: 20px;
+}
+
+.order-container > form {
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: max-content;
+    justify-content: center;
+    align-items: center;
+    gap: 3%;
+    padding: 5%;
+}
+
+.payment-form div{
+    width: 90%;
+    display: flex;
+    height: 40px;
+    margin: 15px;
+    gap: 3px;
+}
+
+.payment-form span {
+    margin: 10px 0;
+}
+
+.payment-form > .tall {
+    margin : 10px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.payment-form > button {
+    width: 40%;
+    height: 50px;
+    margin-top: 20px;
+    padding: 0;
+    border-radius: 15px;
+    border: 1px solid var(--coffe-border);
+    background-color: var(--coffe-stage);
+    margin-bottom: 0;
+    align-self: flex-end;
+}
+
+.card-container > article{
+    border: 2px solid var(--coffe-border);
+    border-radius: 20px;
+    color: var(--coffe-text);
+    padding: 2% 5%;
+    margin: 5px;
+}
+
+article > figure {
+    width: 100%;
+    height: 60%;
+}
+
+article > figure > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+article > .add-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.add-container > button {
+    width: 50%;
+    padding: 5px 0;
+    background-color: var(--coffe-accent);
+    border-radius: 20px;
+    color: #fff;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--coffe-border);
+}
+
+.total-section button {
+    width: 90%;
+    margin: 20px;
+    padding: 10px 0;
+    align-self: center;
+    justify-self: center;
+    background-color: var(--coffe-accent);
+    border-radius: 20px;
+    color: #fff;
+    font-family: DM Sans;
+    font-weight: 500;
+}
+
+#quickSearch {
+    width: 80px;
+    height: 20vh;
+    border-radius: 20px;
+    background-color: var(--coffe-accent);
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    gap: 10px;
+    text-orientation: upright;
+    text-align: center;
+}
+
+.pop-up {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    width: 95%;
+    height: 95vh;
+    background-color: #394b328c;
+    backdrop-filter: blur(20px);
+    box-shadow: 5px 5px 10px #000;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2% 3%;
+}
+
+.pop-up > input {
+    width: 90%;
+    height: 50px;
+    background-color: #dfd5c8;
+    border-radius: 20px;
+    padding: 2% 3%;
+    font-family: "Playfair Display";
+    letter-spacing: 5%;
+    box-shadow: 3px 3px 5px var(--coffe-muted);
+    color: var(--coffe-muted);
+}
+
+.pop-up > .catalog {
+    width: 95%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 380px;
+    gap: 10px;
+    padding: 0 10px;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+.pop-up > .catalog > article {
+    background-color: var(--coffe-stage);
+    border: 2px solid var(--coffe-border);
+    border-radius: 20px;
+    color: var(--coffe-text);
+    padding: 2% 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.pop-up button {
+    background-color: var(--coffe-accent);
+    width: 100%;
+    padding: 8px 0;
+    border-radius: 20px;
+    color: #fff;
+    align-self: center;
+    justify-self: center;
+}
+
+.pop-up img {
+    object-fit: fill;
+}
+
+.wrong-input {
+    outline: 1px solid red;
+}
+.right-input {
+    outline: 1px solid green;
+}
+
+.command-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 450px;
+    gap: 20px;
+}
+
+.command-container > article {
+    border: 1px solid #000;
+    background-color: var(--coffe-stage);
+    border-radius: 20px;
+    padding: 2% 3%;
+    display: flex;
+    flex-direction: column;
+}
+
+.command-container > article > button {
+    width: 90%;
+    padding: 4px 0;
+    background-color: var(--coffe-accent);
+    color: #fff;
+    font-family: "DM Sans";
+    border-radius: 20px;
+    align-self: center;
 }
