@@ -190,7 +190,7 @@ function injectTotal() {
 
 function toCheckout() {
     if (coffeeCart.length > 0){
-        window.location.href = `/checkout.html?${params.toString()}`
+        window.location.href = `/Brum/checkout.html?${params.toString()}`
     } else {
         alert('Please pick an item first')
         return;
