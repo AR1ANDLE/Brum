@@ -22,8 +22,45 @@ const config = {
 const tickets = []
 
 
-const menuSection = document.getElementById('menu')
+
+
+const menuSection = document.getElementById('menu') ?? false
 const formElement = menuSection.querySelector('form')
+
+let menuCrumb = document.getElementById('menuCrumb') ?? false
+let checkoutCrumb = document.getElementById('checkoutCrumb') ?? false
+let modifyButton = document.getElementById('modifyButton') ?? false
+const menuList = document.querySelectorAll('.personalize-section')
+
+const menubuttons = [menuCrumb, modifyButton, document.querySelector('.logo')]
+menubuttons.forEach(btn => {
+        btn.addEventListener('click', toMenu)
+    }) 
+
+function toCheckout() {
+if(!menuSection) {
+    return
+}
+document.getElementById('checkout').classList.remove('hidden') 
+    menuList.forEach(section => section.classList.add('hidden'))
+    menuCrumb.classList.remove('active')
+    checkoutCrumb.classList.add('active')
+
+    window.scrollTo(0, 0)
+}
+
+    function toMenu() {
+        document.getElementById('checkout').classList.add('hidden') 
+
+        menuList.forEach(section => {
+            section.classList.remove('hidden')
+        })
+        
+        menuCrumb.classList.add('active')
+        checkoutCrumb.classList.remove('active')
+        
+        window.scrollTo(0, 0)
+    }
 
 let menuHTML = ''
 let total = 0;

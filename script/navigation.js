@@ -2,6 +2,16 @@
 let shopCount = document.querySelector('.shopCount')
 
 shopCount.innerHTML = JSON.parse(localStorage.getItem('coffecount'))
+function shopCountRefresh (){
+    shopCount.innerHTML = JSON.parse(localStorage.getItem('coffecount'))
+}
+
+document.addEventListener('click',shopCountRefresh)
+document.addEventListener('DOMContentLoaded', shopCountRefresh)
 function toPanier() {
-    window.location = 'http://127.0.0.1:5500/cart.html'
+    window.location.href = '/cart.html'
+}
+
+function home() {
+    window.location.href = '/index.html'
 }

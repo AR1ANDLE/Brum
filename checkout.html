@@ -12,21 +12,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-    <style type="text/tailwindcss">
-        @theme {
-            --color-text : #30291F;
-            --color-accent : #394B32;
-            --color-muted : #796A59;
-            --color-stage: #E8DBC7;
-            --color-border : #dfd5c8;
-            --color-background : #FAF7F0;
-            --color-selected : #E9EEDC;
-            --font-heading: "Bricolage Grotesque", sans-serif;
-            --font-body: "DM Sans", sans-serif;
-            --font-display: "Playfair Display", serif;
-        }
-    </style>
 </head>
 
 <body>
@@ -37,7 +22,7 @@
     </div>
 
     <header>
-        <div class="logo menu">
+        <div class="logo menu" onclick="home()">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -65,7 +50,7 @@
             <a href="#">Besoin d’aide ?</a>
         </nav>
 
-        <div class="shopicon" id="shoppingCart">
+        <div class="shopicon" id="shoppingCart" onclick="toPanier()">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -118,7 +103,7 @@
                     </label>
                     <label for="">
                         <span>Last Name</span>
-                        <input type="text" data-name="name" placeholder="Nom">
+                        <input type="text" data-name="lastname" placeholder="Nom">
                     </label>
                 </div>
                 <label for="" class="tall">
@@ -127,7 +112,7 @@
                 </label>
                 <label for="" class="tall">
                     <span>Card Number</span>
-                    <input type="text" inputmode="numeric" data-name="cardNumber" placeholder="XXXX XXXX XXXX XXXX">
+                    <input type="text" inputmode="numeric" data-name="card" placeholder="XXXX XXXX XXXX XXXX">
                 </label>
                 <div>
                     <label for="">
@@ -136,10 +121,10 @@
                     </label>
                     <label for="">
                         <span>Experation Date</span>
-                        <input type="text" inputmode="numeric" placeholder="MM/YY" data-name="expirationDate">
+                        <input type="text" inputmode="numeric" placeholder="MM/YY" data-name="expiry">
                     </label>
                 </div>
-                <button id="submit" type="button">Validate payment</button>
+                <button id="submit" type="submit">Validate payment</button>
             </form>
         </section>
     </main>
