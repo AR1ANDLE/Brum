@@ -9,9 +9,9 @@ function shopCountRefresh (){
 document.addEventListener('click',shopCountRefresh)
 document.addEventListener('DOMContentLoaded', shopCountRefresh)
 function toPanier() {
-    window.location.href = '/cart.html'
+    window.location.href = '/Brum/cart.html'
 }
 
 function home() {
-    window.location.href = '/index.html'
+    window.location.href = '/Brum/index.html'
 }
