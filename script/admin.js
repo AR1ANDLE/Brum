@@ -2,6 +2,22 @@
 const formSection = document.querySelector('#form-section')
 const form = document.querySelector('form')
 
+// typed data
+let data = {
+    name: null,
+    prix: null,
+    description: null,
+    image: null,
+    promocount: null,
+    promoduration: null,
+    origin: null,
+    intensity: null,
+    temp: null,
+    taille: {},
+    lait: {},
+    supplements: {} 
+}
+
 
 // inject data in form
 function injectForm(name) {
@@ -9,30 +25,40 @@ function injectForm(name) {
         form.innerHTML = `
             <label class="text-text w-xs h-20 flex flex-col text-start gap-1">
                 Name
-                <input type="text" class="bg-white rounded-lg border border-border">
+                <input type="text" class="bg-white rounded-lg border border-border" data-name='name'>
             </label>
             <label class="text-text w-xs h-20 flex flex-col text-start gap-1">
                 Prix
-                <input type="number" min="0" step="0.01" class="bg-white rounded-lg border border-border">
+                <input type="number" min="0" step="0.01" class="bg-white rounded-lg border border-border" data-name='prix'>
             </label>
             <label class="text-text w-full flex flex-col text-start gap-1">
                 Description
-                <textarea class="w-full border h-40  bg-white border-border rounded-xl" id=""></textarea>
+                <textarea class="w-full border h-40  bg-white border-border rounded-xl" data-name="description"></textarea>
             </label>
             <label class="text-text w-full flex flex-col text-start gap-1">
                 image
-                <input type="url" class="bg-white rounded-lg border border-border">
+                <input type="url" class="bg-white rounded-lg border border-border" data-name="image">
             </label>
-            <label for="" class="text-text flex gap-1 items-center" >
-                <input type="checkbox" class="w-[20px] h-[20px] bg-accent ">
+            <label for="" class="text-text flex gap-1 items-center" id="promotion">
+                <input type="checkbox" class="w-[20px] h-[20px] bg-accent" data-name="promotion">
                 Promotion
+                <div class="hidden">
+                    <label>
+                        Promo count
+                        <input type="number" data-name='promocount' />
+                    </label>
+                    <label>
+                        Promo duration
+                        <input type="number" data-name='promoduration'/>
+                    </label>
+                </div>
             </label>
             <div class="w-full flex justify-between my-3">
-                <button class="btn w-[45%] bg-background border-border rounded-xl">Back</button>
-                <button class="btn w-[45%] bg-accent rounded-xl text-white font-body" type="submit">Next</button>
+            <button class="btn w-[45%] bg-background border-border rounded-xl">Back</button>
+            <button class="btn w-[45%] bg-accent rounded-xl text-white font-body" type="submit">Next</button>
             </div>
         `
-        return;
+        setupPromoToggle()
     } else if (name === 'Caractéristiques &amp; Options') {
         form.innerHTML = `
                     <label class="w-full my-3 text-start font-body font-400 text-sm text-text">
@@ -149,7 +175,7 @@ function injectForm(name) {
                                 Large
                             </label>
                         </div>
-                    </fieldset>
+                        </fieldset>
                     <div class="w-full flex justify-between my-3">
                         <button class="btn w-[45%] bg-background border-border rounded-xl">Next</button>
                         <button class="btn w-[45%] bg-accent rounded-xl text-white font-body">Next</button>
@@ -159,7 +185,75 @@ function injectForm(name) {
     }
 }
 
-// display data depending on the breadcrumb navigation 
+
+function setupPromoToggle() {
+    const promo = document.querySelector('#promotion');
+    if (!promo) return;
+
+    const checkbox = promo.querySelector('input[type="checkbox"]');
+    const toggleDiv = promo.querySelector('div');
+
+    if (checkbox && toggleDiv) {
+        checkbox.addEventListener('change', () => {
+            toggleDiv.classList.toggle('hidden');
+        });
+    }
+}
+
+function isPromoActive() {
+    const promo = document.querySelector('#promotion');
+    if (!promo) return false;
+    
+    return promo.querySelector('input[type="checkbox"]').checked;
+}
+
+
+function getData() {
+    data = {};
+    const allInputs = form.querySelectorAll('input, textarea, select');
+
+    allInputs.forEach(input => {
+        if (input.type === 'checkbox') return;
+        if (input.closest('.hidden')) return;
+        data[input.dataset.name] = input.value;
+    });
+
+    console.log(data);
+}
+
+function validateData() {
+    const allInputs = Array.from(form.querySelectorAll('input, textarea, select'));
+    let isValid = true;
+
+    for (let item of allInputs) {
+        if (item.closest('.hidden')) continue;
+        if (item.type === 'checkbox') continue;
+
+        if (item.value.trim() === '') {
+            isValid = false;
+            Swal.fire({
+                icon: "error",
+                title: "Invalid Choice",
+                text: `Please enter a valid ${item.parentElement.textContent} `,
+            });
+            break;
+        }
+    }
+    if (isValid) {
+        getData();
+    }
+}
+
+injectForm('Informations Générales')
+
+
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    validateData()
+})
+
+// display depending on the breadcrumb navigation 
 let breadcrumbNav = document.querySelector('#breadcrumbNav')
 breadcrumbNav.addEventListener('click', (e) => {
 
@@ -171,30 +265,5 @@ breadcrumbNav.addEventListener('click', (e) => {
         e.target.closest('a').classList.add('border-b')
     }
     injectForm(e.target.closest('a').innerHTML)
-    checkForm()
-    console.log(e.target.closest('a').innerHTML)
 })
 
-function checkForm() {
-    let inputs = form.querySelectorAll('input')
-    inputs.forEach(input => {
-        if(!(input.getAttribute('type') === 'checkbox')){
-            if(input.value === '') {
-                Swal.fire({
-                title: "Please fill all the fields before continuing",
-                showClass: { popup: `
-                    animate__animated
-                    animate__fadeInUp
-                    animate__faster
-                    ` },
-                hideClass: { popup: `
-                    animate__animated
-                    animate__fadeOutDown
-                    animate__faster
-                    ` }
-                });
-                return;
-            }
-        }
-    })
-}
