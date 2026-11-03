@@ -54,12 +54,11 @@ function injectForm(name) {
                 </div>
             </label>
             <div class="w-full flex justify-between my-3">
-            <button class="btn w-[45%] bg-background border-border rounded-xl">Back</button>
-            <button class="btn w-[45%] bg-accent rounded-xl text-white font-body" type="submit">Next</button>
+            <button class="btn w-[45%] bg-accent rounded-xl text-white font-body">Next</button>
             </div>
         `
         setupPromoToggle()
-    } else if (name === 'Caractéristiques &amp; Options') {
+    } else if (name === 'Caractéristiques & Options') {
         form.innerHTML = `
                     <label class="w-full my-3 text-start font-body font-400 text-sm text-text">
                         Origine des grains
@@ -177,7 +176,7 @@ function injectForm(name) {
                         </div>
                         </fieldset>
                     <div class="w-full flex justify-between my-3">
-                        <button class="btn w-[45%] bg-background border-border rounded-xl">Next</button>
+                        <button class="btn w-[45%] bg-background border-border rounded-xl">Back</button>
                         <button class="btn w-[45%] bg-accent rounded-xl text-white font-body">Next</button>
                     </div>
         `
@@ -230,13 +229,15 @@ function validateData() {
         if (item.type === 'checkbox') continue;
 
         if (item.value.trim() === '') {
+            item.style.outline = '2px solid red'
             isValid = false;
             Swal.fire({
                 icon: "error",
                 title: "Invalid Choice",
-                text: `Please enter a valid ${item.parentElement.textContent} `,
+                text: `Please fill all the fields`,
             });
-            break;
+        } else {
+            item.style.outline = '2px solid green'
         }
     }
     if (isValid) {
@@ -247,23 +248,55 @@ function validateData() {
 injectForm('Informations Générales')
 
 
+// Form Navigation
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault()
-    validateData()
-})
+function getButtons() {
+    return document.querySelectorAll('button')
+}
+
+function navigation(nodelist) {
+    nodelist.forEach(item => {
+        if(item.textContent === 'Next') {
+            next()
+        }
+        if(item.textContent === 'Back') {
+            back()
+        }
+    })
+}
+
+function next() {
+    const steps = breadcrumbNav.querySelectorAll('li > a')
+    
+    for(let step of steps) {
+        if (step.classList.contains('active')) {
+            step.classList.remove('active')
+            step.classList.remove('border-b')
+            step.parentElement.nextElementSibling.firstChild.classList.add('active')
+            step.parentElement.nextElementSibling.firstChild.classList.add('border-b')
+            injectForm(step.parentElement.nextElementSibling.firstChild.textContent)
+            break
+        }
+    }
+    return;
+}
+
+function back() {
+    const steps = breadcrumbNav.querySelectorAll('li > a')
+    
+    for(let step of steps) {
+        if (step.classList.contains('active')) {
+            step.classList.remove('active')
+            step.classList.remove('border-b')
+            step.parentElement.previousElementSibling.firstChild.classList.add('active')
+            step.parentElement.previousElementSibling.firstChild.classList.add('border-b')
+            injectForm(step.parentElement.previousElementSibling.firstChild.textContent)
+            break
+        }
+    }
+    return;
+}
+
 
 // display depending on the breadcrumb navigation 
 let breadcrumbNav = document.querySelector('#breadcrumbNav')
-breadcrumbNav.addEventListener('click', (e) => {
-
-    breadcrumbNav.querySelectorAll('li').forEach(element => {
-        element.querySelector('a').classList.remove('border-b')
-    })
-
-    if(e.target === e.target.closest('a')) {
-        e.target.closest('a').classList.add('border-b')
-    }
-    injectForm(e.target.closest('a').innerHTML)
-})
-
