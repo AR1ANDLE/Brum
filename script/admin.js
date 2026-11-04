@@ -1,37 +1,38 @@
 // form variables
-const formSection = document.querySelector('#form-section')
-const form = document.querySelector('form')
+const formSection = document.querySelector("#form-section");
+const form = document.querySelector("form");
 
 // typed data
 const data = {
-    name: null,
-    prix: null,
-    description: null,
-    image: null,
-    promotion: false,
-    promocount: null,
-    promoduration: null,
-    origin: null,
-    intensity: null,
-    temp: null,
-    taille: [],
-    lait: [],
-    supplements: [] 
-}
+  name: null,
+  prix: null,
+  description: null,
+  image: null,
+  promotion: false,
+  promocount: null,
+  promoduration: null,
+  origin: null,
+  intensity: null,
+  temp: null,
+  taille: [],
+  lait: [],
+  supplements: [],
+};
 
 const regex = {
-    name: /^\s*\S.*$/,
-    prix: /(?:\$|£|€)?\d+(?:\.\d{2})?/,
-    description: /^.*[a-zA-Z]+.*$/,
-    image: /^https?:\/\/[^\s]+(?:\.|\/)(?:jpe?g|png|gif|webp|avif|bmp|svg)(?:\?.*)?$/,
-    promocount: /^\d+(?:\.\d+)?$/,
-    promoduration: /^\d+(?:\.\d+)?$/
-}
+  name: /^\s*\S.*$/,
+  prix: /(?:\$|£|€)?\d+(?:\.\d{2})?/,
+  description: /^.*[a-zA-Z]+.*$/,
+  image:
+    /^https?:\/\/[^\s]+(?:\.|\/)(?:jpe?g|png|gif|webp|avif|bmp|svg)(?:\?.*)?$/,
+  promocount: /^\d+(?:\.\d+)?$/,
+  promoduration: /^\d+(?:\.\d+)?$/,
+};
 
 // inject data in form
 function injectForm(name) {
-    if(name === "Informations Générales") {
-        form.innerHTML = `
+  if (name === "Informations Générales") {
+    form.innerHTML = `
             <label class="text-text w-xs h-20 flex flex-col text-start gap-1">
                 Name
                 <input type="text" class="bg-white rounded-lg border border-border" data-name='name'>
@@ -65,12 +66,12 @@ function injectForm(name) {
             <div class="w-full flex justify-between my-3">
             <button class="btn w-[45%] bg-accent rounded-xl text-white font-body" type="button">Next</button>
             </div>
-        `
-        setupPromoToggle()
-        navigation(getButtons())
-        displayProgress()
-    } else if (name === 'Caractéristiques & Options') {
-        form.innerHTML = `
+        `;
+    setupPromoToggle();
+    navigation(getButtons());
+    displayProgress();
+  } else if (name === "Caractéristiques & Options") {
+    form.innerHTML = `
                     <label class="w-full my-3 text-start font-body font-400 text-sm text-text">
                         Origine des grains
                         <select class="w-full my-1 h-10 bg-stage cursor-pointer rounded-lg flex text-sm border border-border px-1" data-name='origin'>
@@ -122,12 +123,12 @@ function injectForm(name) {
                         <legend class="fieldset-legend">Température </legend>
                         <div data-name='temp' class="flex gap-10">
                             <label class="label text-text" for="temperature">
-                                <input type="radio" class="radio checked:text-stage checked:border-stage" name="temperature"/>
-                                Small
+                                <input type="radio" class="radio checked:text-stage checked:border-stage" data-key="chaud" name="temperature"/>
+                                Chaud
                             </label>
                             <label class="label text-text" for="temperature">
-                                <input type="radio" class="radio checked:text-stage checked:border-stage" name="temperature"/>
-                                Medium
+                                <input type="radio" class="radio checked:text-stage checked:border-stage" data-key="glace" name="temperature"/>
+                                Glacé
                             </label>
                         </div>
                     </fieldset>
@@ -135,15 +136,15 @@ function injectForm(name) {
                         <legend class="fieldset-legend">Tailles disponibles</legend>
                         <div data-name='taille' class="flex gap-10">
                             <label class="label text-text">
-                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" />
+                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" data-key="Small"/>
                                 Small
                             </label>
                             <label class="label text-text">
-                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" />
+                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" data-key="Medium"/>
                                 Medium
                             </label>
                             <label class="label text-text">
-                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" />
+                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" data-key="Large"/>
                                 Large
                             </label>
                         </div>
@@ -152,19 +153,19 @@ function injectForm(name) {
                         <legend class="fieldset-legend">Options de lait</legend>
                         <div data-name='lait' class="flex gap-10">
                             <label class="label text-text">
-                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" />
+                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" data-key="Vache" />
                                 Vache
                             </label>
                             <label class="label text-text">
-                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" />
+                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" data-key="Avoine"/>
                                 Avoine
                             </label>
                             <label class="label text-text">
-                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" />
+                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" data-key="Soja"/>
                                 Soja
                             </label>
                             <label class="label text-text">
-                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" />
+                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" data-key="Amande"/>
                                 Amande
                             </label>
                         </div>
@@ -173,15 +174,15 @@ function injectForm(name) {
                         <legend class="fieldset-legend">Suppléments</legend>
                         <div data-name='supplements' class="flex gap-10">
                             <label class="label text-text">
-                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" />
+                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" data-key="Vanille"/>
                                 Vanille
                             </label>
                             <label class="label text-text">
-                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" />
+                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" data-key="Caramel"/>
                                 Caramel
                             </label>
                             <label class="label text-text">
-                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" />
+                                <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" data-key="Noisette"/>
                                 Noisette
                             </label>
                         </div>
@@ -190,188 +191,246 @@ function injectForm(name) {
                         <button class="btn w-[45%] bg-background border-border rounded-xl" type='button'>Back</button>
                         <button class="btn w-[45%] bg-accent rounded-xl text-white font-body" type="button">Next</button>
                     </div>
-        `
-        navigation(getButtons())
-        displayProgress()
-        return;
-    }
+        `;
+    navigation(getButtons());
+    displayProgress();
+  } else {
+    form.innerHTML = ''
+  }
 }
 
 function setupPromoToggle() {
-    const promo = document.querySelector('#promotion');
-    if (!promo) return;
+  const promo = document.querySelector("#promotion");
+  if (!promo) return;
 
-    const checkbox = promo.querySelector('input[type="checkbox"]');
-    const toggleDiv = promo.querySelector('div');
+  const checkbox = promo.querySelector('input[type="checkbox"]');
+  const toggleDiv = promo.querySelector("div");
 
-    if (checkbox && toggleDiv) {
-        checkbox.addEventListener('change', () => {
-            if(checkbox.checked) {
-                toggleDiv.classList.remove('hidden')
-                data.promotion = true
-            } else {
-                toggleDiv.classList.add('hidden')
-                toggleDiv.querySelectorAll('input').forEach(input => input.value = null)
-            }
-        });
-    }
+  if (checkbox && toggleDiv) {
+    checkbox.addEventListener("change", () => {
+      if (checkbox.checked) {
+        toggleDiv.classList.remove("hidden");
+        data.promotion = true;
+      } else {
+        toggleDiv.classList.add("hidden");
+        toggleDiv
+          .querySelectorAll("input")
+          .forEach((input) => (input.value = null));
+      }
+    });
+  }
 }
 
 function isPromoActive() {
-    const promo = document.querySelector('#promotion');
-    if (!promo) return false;
-    
-    return promo.querySelector('input[type="checkbox"]').checked;
+  const promo = document.querySelector("#promotion");
+  if (!promo) return false;
+
+  return promo.querySelector('input[type="checkbox"]').checked;
 }
 
 // Progress Bar
-const progressBar = document.querySelector('#progressbar')
-const steps = document.querySelectorAll('#breadcrumbNav a')
-
+const progressBar = document.querySelector("#progressbar");
+const steps = document.querySelectorAll("#breadcrumbNav a");
 
 function getProgress() {
-    let progress;
-    steps.forEach(step => {
-        if(step.classList.contains('active')) {
-            progress = step.dataset.step
-        }
-    })
-    return (progress / steps.length) * 100
+  let progress;
+  steps.forEach((step) => {
+    if (step.classList.contains("active")) {
+      progress = step.dataset.step;
+    }
+  });
+  return (progress / steps.length) * 100;
 }
 
 function displayProgress() {
-    progressBar.querySelector('div').classList.add(`w-[${getProgress()}%]`)
+  progressBar.querySelector("div").classList.add(`w-[${getProgress()}%]`);
 }
 
 // Check data
 function checkRegex(regex, data) {
-    return regex.test(data) // true < false
+  return regex.test(data); // true < false
 }
 
 function valiateData() {
     getData()
-    if(document.querySelector('.active').textContent === 'Informations Générales'){
-        const allInputs = form.querySelectorAll('input, textarea')
+  if (
+    document.querySelector(".active").textContent === "Informations Générales"
+  ) {
+    const allInputs = form.querySelectorAll("input, textarea");
+
+    for (let input of allInputs) {
+      if (
+        input.parentElement.parentElement.classList.contains("hidden") ||
+        input.type === "checkbox"
+      )
+        continue;
+      if (!checkRegex(regex[input.dataset.name], data[input.dataset.name])) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `Please enter a valid ${input.dataset.name}`,
+        });
+        return false;
+      }
+    }
+  }
+  if(
+    document.querySelector('.active').textContent === "Caractéristiques & Options"
+  ) {
+    const {radioArr, tailleArr} = getData()
     
-        for(let input of allInputs) {
-            if((input.parentElement.parentElement).classList.contains('hidden') || input.type === 'checkbox') continue;
-            if(!(checkRegex(regex[input.dataset.name], data[input.dataset.name]))) {
-                Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: `Please enter a valid ${input.dataset.name}`
-                });
-                return false;
-            }
+    if (radioArr.length < 1) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You Must specify a Temperature",
+      });
+      return false;
     }
+    if (tailleArr.length < 1) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please pick at least one size",
+      });
+      return false;
     }
-    return true;
+  }
+  return true;
 }
 
 function getData() {
-    
-    if(document.querySelector('.active').textContent === 'Informations Générales'){
-        let allInputs = form.querySelectorAll('input, textarea');
-        allInputs.forEach(input => {
-            if (input.closest('.hidden')) return;
-            if (input.type=="checkbox") data[input.dataset.name] = input.checked
-            else data[input.dataset.name] = input.value;
-        });
-    }
+  if (
+    document.querySelector(".active").textContent === "Informations Générales"
+  ) {
+    let allInputs = form.querySelectorAll("input, textarea");
+    allInputs.forEach((input) => {
+      if (input.closest(".hidden")) return;
+      if (input.type == "checkbox") data[input.dataset.name] = input.checked;
+      else data[input.dataset.name] = input.value;
+    });
+  }
 
-    if(document.querySelector('.active').textContent === 'Caractéristiques & Options'){
-       let selections = form.querySelectorAll('select, input[type="range"]')
-       let inputs = form.querySelectorAll('input[type="checkbox"], input[type="radio"]')
-    //    selections.forEach(input => console.log(input.dataset.name))
-       inputs.forEach(input => {
-        if(input.type === 'radio') {
-            console.log(input.checked.value)
-            data[input.closest('div').dataset.name] = input.checked.value
+  if (
+    document.querySelector(".active").textContent ===
+    "Caractéristiques & Options"
+  ) {
+    let radioArr = [];
+    let tailleArr = [];
+    let selections = form.querySelectorAll('select, input[type="range"]');
+    let inputs = form.querySelectorAll(
+      'input[type="checkbox"], input[type="radio"]',
+    );
+    selections.forEach((selection) => {
+      data[selection.dataset.name] = selection.value;
+    });
+    inputs.forEach((input) => {
+      if (input.type === "radio") {
+        if (input.checked) {
+          data[input.closest("div").dataset.name] = input.dataset.key;
+          radioArr.push(input);
         }
-       })
+      } else if (input.type === "checkbox") {
+        if (input.checked) {
+          data[input.closest("div").dataset.name].push(input.dataset.key);
+          if(input.closest('div').dataset.name === 'taille') {
+            tailleArr.push(input)
+          }
+        }
+      }
+    });
+    return {
+        radioArr, tailleArr
     }
+  }
 }
 
 function displayData() {
-    const allInputs = form.querySelectorAll('input, textarea')
-    const promoCheckbox = form.querySelector('input[data-name="promotion"]');
-    console.log("promoCheckbox",promoCheckbox)
-    const toggleDiv = promoCheckbox ? promoCheckbox.closest('#promotion')?.querySelector('div') : null;
-    console.log("toggleDiv",toggleDiv)
-    if (promoCheckbox && data.promotion) {
-        promoCheckbox.checked = data.promotion;
-        if (toggleDiv) {
-            if (data.promotion) {
-                toggleDiv.classList.remove('hidden');
-            } else {
-                toggleDiv.classList.add('hidden');
-            }
-        }
+  const allInputs = form.querySelectorAll("input, textarea");
+  const promoCheckbox = form.querySelector('input[data-name="promotion"]');
+  const toggleDiv = promoCheckbox
+    ? promoCheckbox.closest("#promotion")?.querySelector("div")
+    : null;
+  if (promoCheckbox && data.promotion) {
+    promoCheckbox.checked = data.promotion;
+    if (toggleDiv) {
+      if (data.promotion) {
+        toggleDiv.classList.remove("hidden");
+      } else {
+        toggleDiv.classList.add("hidden");
+      }
     }
+  }
 
-    allInputs.forEach(input => {
-        if(input.closest('.hidden')) return;
-        input.value = data[input.dataset.name]
-    })
+  allInputs.forEach((input) => {
+    if (input.closest(".hidden")) return;
+    input.value = data[input.dataset.name];
+  });
 }
 
-injectForm('Informations Générales')
-
+injectForm("Informations Générales");
 
 // Form Navigation
 
 function getButtons() {
-    return document.querySelectorAll('button')
+  return document.querySelectorAll("button");
 }
 
 function navigation(nodelist) {
-    nodelist.forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault()
-            if(item.textContent === 'Next') {
-                next()
-            }
-            if(item.textContent === 'Back') {
-                back()
-            }
-        })
-    })
+  nodelist.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (item.textContent === "Next") {
+        next();
+      }
+      if (item.textContent === "Back") {
+        back();
+      }
+    });
+  });
 }
 
 function next() {
-    if(!(valiateData())) return
-    const steps = breadcrumbNav.querySelectorAll('li > a')
-    
-    for(let step of steps) {
-        if (step.classList.contains('active')) {
-            step.classList.remove('active')
-            step.classList.remove('border-b')
-            step.parentElement.nextElementSibling.firstChild.classList.add('active')
-            step.parentElement.nextElementSibling.firstChild.classList.add('border-b')
-            injectForm(step.parentElement.nextElementSibling.firstChild.textContent)
-            break
-        }
+  if (!valiateData()) return;
+  const steps = breadcrumbNav.querySelectorAll("li > a");
+
+  for (let step of steps) {
+    if (step.classList.contains("active")) {
+      step.classList.remove("active");
+      step.classList.remove("border-b");
+      step.parentElement.nextElementSibling.firstChild.classList.add("active");
+      step.parentElement.nextElementSibling.firstChild.classList.add(
+        "border-b",
+      );
+      injectForm(step.parentElement.nextElementSibling.firstChild.textContent);
+      break;
     }
-    return;
+  }
+  return;
 }
 
 function back() {
-    const steps = breadcrumbNav.querySelectorAll('li > a')
-    
-    for(let step of steps) {
-        if (step.classList.contains('active')) {
-            step.classList.remove('active')
-            step.classList.remove('border-b')
-            step.parentElement.previousElementSibling.firstChild.classList.add('active')
-            step.parentElement.previousElementSibling.firstChild.classList.add('border-b')
-            injectForm(step.parentElement.previousElementSibling.firstChild.textContent)
-            break
-        }
+  const steps = breadcrumbNav.querySelectorAll("li > a");
+
+  for (let step of steps) {
+    if (step.classList.contains("active")) {
+      step.classList.remove("active");
+      step.classList.remove("border-b");
+      step.parentElement.previousElementSibling.firstChild.classList.add(
+        "active",
+      );
+      step.parentElement.previousElementSibling.firstChild.classList.add(
+        "border-b",
+      );
+      injectForm(
+        step.parentElement.previousElementSibling.firstChild.textContent,
+      );
+      break;
     }
-    displayData()
-    return;
+  }
+  displayData();
+  return;
 }
 
-
-// display depending on the breadcrumb navigation 
-let breadcrumbNav = document.querySelector('#breadcrumbNav')
+// display depending on the breadcrumb navigation
+let breadcrumbNav = document.querySelector("#breadcrumbNav");
