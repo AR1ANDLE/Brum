@@ -22,7 +22,7 @@ const data = {
 const regex = {
     name: /^\s*\S.*$/,
     prix: /(?:\$|£|€)?\d+(?:\.\d{2})?/,
-    description: /^\s*(?:\b\w+\b\s*){1,499}$/,
+    description: /^.*[a-zA-Z]+.*$/,
     image: /^https?:\/\/[^\s]+(?:\.|\/)(?:jpe?g|png|gif|webp|avif|bmp|svg)(?:\?.*)?$/,
     promocount: /^\d+(?:\.\d+)?$/,
     promoduration: /^\d+(?:\.\d+)?$/
@@ -68,11 +68,12 @@ function injectForm(name) {
         `
         setupPromoToggle()
         navigation(getButtons())
+        displayProgress()
     } else if (name === 'Caractéristiques & Options') {
         form.innerHTML = `
                     <label class="w-full my-3 text-start font-body font-400 text-sm text-text">
                         Origine des grains
-                        <select class="w-full my-1 h-10 bg-stage rounded-lg flex text-sm border border-border px-1" data-name='origin'>
+                        <select class="w-full my-1 h-10 bg-stage cursor-pointer rounded-lg flex text-sm border border-border px-1" data-name='origin'>
                             <option>Colombie</option>
                             <option>Éthiopie</option>
                             <option>Brésil</option>
@@ -169,19 +170,19 @@ function injectForm(name) {
                         </div>
                     </fieldset>
                     <fieldset class="fieldset bg-stage border-border w-full rounded-box border p-4">
-                        <legend class="fieldset-legend">Tailles disponibles</legend>
+                        <legend class="fieldset-legend">Suppléments</legend>
                         <div data-name='supplements' class="flex gap-10">
                             <label class="label text-text">
                                 <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" />
-                                Small
+                                Vanille
                             </label>
                             <label class="label text-text">
                                 <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" />
-                                Medium
+                                Caramel
                             </label>
                             <label class="label text-text">
                                 <input type="checkbox" class="checkbox checked:text-accent checked:border-accent checked:bg-white" />
-                                Large
+                                Noisette
                             </label>
                         </div>
                         </fieldset>
@@ -191,6 +192,7 @@ function injectForm(name) {
                     </div>
         `
         navigation(getButtons())
+        displayProgress()
         return;
     }
 }
@@ -223,11 +225,27 @@ function isPromoActive() {
 }
 
 // Progress Bar
+const progressBar = document.querySelector('#progressbar')
+const steps = document.querySelectorAll('#breadcrumbNav a')
 
+
+function getProgress() {
+    let progress;
+    steps.forEach(step => {
+        if(step.classList.contains('active')) {
+            progress = step.dataset.step
+        }
+    })
+    return (progress / steps.length) * 100
+}
+
+function displayProgress() {
+    progressBar.querySelector('div').classList.add(`w-[${getProgress()}%]`)
+}
 
 // Check data
 function checkRegex(regex, data) {
-    return regex.test(data)
+    return regex.test(data) // true < false
 }
 
 function valiateData() {
@@ -255,23 +273,32 @@ function getData() {
     if(document.querySelector('.active').textContent === 'Informations Générales'){
         let allInputs = form.querySelectorAll('input, textarea');
         allInputs.forEach(input => {
-            if (input.type === 'checkbox') data[input.dataset.name] = input.checked;
             if (input.closest('.hidden')) return;
-            data[input.dataset.name] = input.value;
+            if (input.type=="checkbox") data[input.dataset.name] = input.checked
+            else data[input.dataset.name] = input.value;
         });
     }
 
     if(document.querySelector('.active').textContent === 'Caractéristiques & Options'){
-       let allInputs = form.querySelectorAll('input, select')
-       allInputs.forEach(input => console.log(input.dataset.name))
+       let selections = form.querySelectorAll('select, input[type="range"]')
+       let inputs = form.querySelectorAll('input[type="checkbox"], input[type="radio"]')
+    //    selections.forEach(input => console.log(input.dataset.name))
+       inputs.forEach(input => {
+        if(input.type === 'radio') {
+            console.log(input.checked.value)
+            data[input.closest('div').dataset.name] = input.checked.value
+        }
+       })
     }
 }
 
 function displayData() {
     const allInputs = form.querySelectorAll('input, textarea')
     const promoCheckbox = form.querySelector('input[data-name="promotion"]');
+    console.log("promoCheckbox",promoCheckbox)
     const toggleDiv = promoCheckbox ? promoCheckbox.closest('#promotion')?.querySelector('div') : null;
-    if (promoCheckbox && data.promotion !== undefined) {
+    console.log("toggleDiv",toggleDiv)
+    if (promoCheckbox && data.promotion) {
         promoCheckbox.checked = data.promotion;
         if (toggleDiv) {
             if (data.promotion) {
