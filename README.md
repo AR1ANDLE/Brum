@@ -42,28 +42,6 @@ Manipulation du DOM
 * Session Storage
 * Gestion des interactions utilisateur
 
-### Structure du projet
-
-Brum/
-│
-├── assets/
-│   └── images/
-│
-├── css/
-│   ├── style.css
-│   └── responsive.css
-│
-├── script/
-│   ├── main.js
-│   └── navigation.js
-│
-├── admin.html
-├── index.html
-├── cart.html
-├── checkout.html
-│
-└── README.md
-
 ### Objectifs pédagogiques
 
 BRUM est bien plus qu’un simple site de personnalisation de café : c’est un projet pratique permettant de consolider les connaissances fondamentales en JavaScript.
