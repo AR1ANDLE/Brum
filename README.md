@@ -55,13 +55,3 @@ Le développement de ce projet met l’accent sur l’interaction entre JavaScri
 * Réduire les boucles imbriquées inutiles.
 * Améliorer les conventions de nommage et la structure HTML.
 * Optimiser davantage le responsive design et l’expérience utilisateur.
-
-### Auteur
-
-AR1ANDLE
-
-GitHub : @AR1ANDLE
-
-⸻
-
-Développé avec ☕ et JavaScript.
